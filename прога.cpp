@@ -1,48 +1,59 @@
 
 #include "TXlib.h"
 
-void programm (int x, int y, int vx, int vy);
+struct Hero
+    {
+    int x , y;
+    int vx, vy;
 
-void Physics (int *x, int *y, int *vx, int *vy);
+    int color, size;
 
+    int up, down, right, left,  stop;
+
+    };
+
+void programm ();
+void GameHero (Hero *hero);
+
+void Physics (Hero *hero);
+void Button  (Hero *hero);
+void Draw    (Hero *hero);
 
 
 int main ()
     {
     txCreateWindow (1000, 1000);
 
-    programm (300, 300, 7, 5);
+    programm ();
 
     }
 
 
-void programm (int x, int y, int vx, int vy)
+void programm ()
     {
-    int x2  = 100, y2  = 200;
-    int vx2 = 10,  vy2 = 5;
-
-    int x3  = 700, y3  = 200;
-    int vx3 = 10,  vy3 = 5;
+    Hero Viktor    = {300, 300, 2, 2, TX_RED,    25, VK_UP, VK_DOWN, VK_RIGHT, VK_LEFT, VK_SPACE};
+    Hero Romounald = {100, 100, 3, 2, TX_GREEN,  25, 'W',   'S',     'D',      'A',     'Q'};
+    Hero Vlad      = {500, 200, 4, 3, TX_BLUE,   50};
+    Hero Ilya      = {800, 200, 5, 5, TX_YELLOW, 50};
 
     while (!GetAsyncKeyState (VK_ESCAPE))
         {
 
-
         txSetFillColor (TX_BLACK);
         txClear        ();
 
-        txSetFillColor (TX_RED);
-        txCircle       (x, y, 25);
+        //1
+        GameHero (&Viktor);
 
-        txSetFillColor (TX_GREEN);
-        txCircle       (x2, y2, 25);
+        //2
+        GameHero (&Romounald);
 
-        txSetFillColor (TX_BLUE);
-        txCircle       (x3, y3, 25);
+        //3
+        GameHero (&Vlad);
 
-        Physics        (&x,  &y,  &vx,  &vy);
-        Physics        (&x2, &y2, &vx2, &vy2);
-        Physics        (&x3, &y3, &vx3, &vy3);
+        //4
+        GameHero (&Ilya);
+
 
         txSleep        (10);
         }
@@ -50,33 +61,57 @@ void programm (int x, int y, int vx, int vy)
 //    txMessageBox ("Win");
     }
 
-void Physics (int *x, int *y, int *vx, int *vy)
+void Physics (Hero *hero)
     {
-    *x = *x + *vx;
-    *y = *y + *vy;
+    (*hero).x = (*hero).x + (*hero).vx;
+    (*hero).y = (*hero).y + (*hero).vy;
 
-    if (*x < 0)
+    if ((*hero).x < 50)
         {
-        *x  = 0;
-        *vx = -*vx;
+        (*hero).x  = 50;
+        (*hero).vx = -(*hero).vx;
         }
 
-    if (*y < 0)
+    if ((*hero).y < 50)
         {
-        *y  = 0;
-        *vy = -*vy;
+        (*hero).y  = 50;
+        (*hero).vy = -(*hero).vy;
         }
 
-    if (*x > 950)
+    if ((*hero).x > 950)
         {
-        *x  = 950;
-        *vx = -*vx;
+        (*hero).x  = 950;
+        (*hero).vx = -(*hero).vx;
         }
 
-    if (*y > 950)
+    if ((*hero).y > 950)
         {
-        *y  = 950;
-        *vy = -*vy;
+        (*hero).y  = 950;
+        (*hero).vy = -(*hero).vy;
         }
 
+    }
+
+void Button (Hero *hero)
+    {
+
+    if (GetAsyncKeyState ((*hero).up))    ((*hero).vy)--;
+    if (GetAsyncKeyState ((*hero).down))  ((*hero).vy)++;
+    if (GetAsyncKeyState ((*hero).left))  ((*hero).vx)--;
+    if (GetAsyncKeyState ((*hero).right)) ((*hero).vx)++;
+    if (GetAsyncKeyState ((*hero).stop))  ((*hero).vx) = ((*hero).vy) = 0;
+    }
+
+void Draw (Hero *hero)
+    {
+    txSetFillColor ((*hero).color);
+    txCircle       ((*hero).x,  (*hero).y, (*hero).size);
+    }
+
+
+void GameHero (Hero *hero)
+    {
+    Draw    (*hero);
+    Physics (*hero);
+    Button  (*hero);
     }
