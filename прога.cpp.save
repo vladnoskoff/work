@@ -12,17 +12,18 @@ struct Hero
 
     int up, down, right, left,  stop;
 
+    void Button   ();
+    void Physics  ();
+    void Draw     ();
+    void Run      ();
+
     };
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 void programm ();
 
-void Physics (Hero *hero);
-void Button  (Hero *hero);
-void Draw    (Hero *hero);
-
-void GameHero (Hero *hero);
+void Logic (Hero hero1, Hero hero2);
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -50,101 +51,119 @@ void programm ()
         txClear        ();
 
         //1
-        GameHero (&Viktor);
+        Viktor.Run     ();
+
 
         //2
-        GameHero (&Romounald);
+        Romounald.Run  ();
 
         //3
-        GameHero (&Vlad);
+        Vlad.Run       ();
 
         //4
-        GameHero (&Ilya);
+        Ilya.Run       ();
 
+
+        Logic (Vlad, Viktor);
 
         txSleep        (10);
         }
 
-//    txMessageBox ("Win");
     }
 
 //ќтвичает за движение------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-void Physics (Hero *hero)
+void Hero::Physics ()
     {
-    (*hero).x = (*hero).x + (*hero).vx;
-    (*hero).y = (*hero).y + (*hero).vy;
+    x = x + vx;
+    y = y + vy;
 
-    if ((*hero).x < 50)
+    if (x < 50)
         {
-        (*hero).x  = 50;
-        (*hero).vx = -(*hero).vx;
+        x  = 50;
+        vx = -vx;
         }
 
-    if ((*hero).y < 50)
+    if (y < 50)
         {
-        (*hero).y  = 50;
-        (*hero).vy = -(*hero).vy;
+        y  = 50;
+        vy = -vy;
         }
 
-    if ((*hero).x > 950)
+    if (x > 950)
         {
-        (*hero).x  = 950;
-        (*hero).vx = -(*hero).vx;
+        x  = 950;
+        vx = -vx;
         }
 
-    if ((*hero).y > 950)
+    if (y > 950)
         {
-        (*hero).y  = 950;
-        (*hero).vy = -(*hero).vy;
+        y  = 950;
+        vy = -vy;
         }
 
     }
 
 // лавиши управлени€------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-void Button (Hero *hero)
+void Hero::Button ()
     {
 
-    if (GetAsyncKeyState ((*hero).up))    ((*hero).vy)--;
-    if (GetAsyncKeyState ((*hero).down))  ((*hero).vy)++;
-    if (GetAsyncKeyState ((*hero).left))  ((*hero).vx)--;
-    if (GetAsyncKeyState ((*hero).right)) ((*hero).vx)++;
-    if (GetAsyncKeyState ((*hero).stop))  ((*hero).vx) = ((*hero).vy) = 0;
+    if (GetAsyncKeyState (up))    (vy)--;
+    if (GetAsyncKeyState (down))  (vy)++;
+    if (GetAsyncKeyState (left))  (vx)--;
+    if (GetAsyncKeyState (right)) (vx)++;
+    if (GetAsyncKeyState (stop))  (vx) = (vy) = 0;
     }
 
 //–исование шарика------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-void Draw (Hero *hero)
+void Hero::Draw ()
     {
-    txSetFillColor ((*hero).color);
-    txCircle       ((*hero).x,  (*hero).y, (*hero).size);
+    txSetFillColor (color);
+    txCircle       (x,  y, size);
     }
 
 //ќтвечает за всего геро€------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-void GameHero (Hero hero)
+void Hero::Run ()
     {
-    Draw    (hero);
-    Physics (hero);
-    Button  (hero);
+    Draw    ();
+    Physics ();
+    Button  ();
     }
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+void Logic (Hero hero1, Hero hero2)
+    {
+    double distance = sqrt ((hero2.x-hero1.x)*(hero2.x-hero1.x) + (hero2.y-hero1.y)*(hero2.y-hero1.y));
+
+    printf ("distance = %lg\n", distance);
+
+    if (distance < 50)
+        {
+         txMessageBox ("Win Viktor");
+        }
+
+    }
 
 
-/*                                              ¬ какой ф. нам дан пар Y?
+
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+/*
+                                                ¬ какой ф. нам дан пар Y?
 
                                             копи€ (значение)         указатель
 
-             в какой ф. нужно 
+             в какой ф. нужно
              передать пар. Y дальше?
 
              копи€ (значение)                Y                         *Y
-             
-             указатель                       &Y                        Y
 
+             указатель                       &Y                        Y
 
 */
 
