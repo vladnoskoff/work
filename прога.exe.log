@@ -1,0 +1,270 @@
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\LEON\Desktop\work\прога.exe, файл: C:\Users\LEON\Desktop\work\TXlib.h, строка: 10854, функция: bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2BC (32-bit), Flags: CMdRe0, Thread: 0x142E4 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0041F4BC in C:\Users\LEON\Desktop\work\прога.exe: txBitBlt() at C:/Users/LEON/Desktop/work/TXlib.h (10854)
+# 1 0x0041F9C7 in C:\Users\LEON\Desktop\work\прога.exe: txBitBlt() at C:/Users/LEON/Desktop/work/TXlib.h (10873)
+
+# 2 0x00426B4C in C:\Users\LEON\Desktop\work\прога.exe: Draw() at C:/Users/LEON/Desktop/work/прога.cpp (129):
+
+    127: void Hero::Draw ()
+    128:     {
+=>  129:     txBitBlt (x, y, photo);
+    130: 
+    131:     txSetFillColor (color);
+
+# 3 0x00426BE7 in C:\Users\LEON\Desktop\work\прога.exe: Run() at C:/Users/LEON/Desktop/work/прога.cpp (140):
+
+    138: void Hero::Run ()
+    139:     {
+=>  140:     Draw    ();
+    141:     Physics ();
+    142:     Button  ();
+
+# 4 0x004267FB in C:\Users\LEON\Desktop\work\прога.exe: programm() at C:/Users/LEON/Desktop/work/прога.cpp (64):
+
+     62: 
+     63:         //2
+=>   64:         Romounald.Run  ();
+     65: 
+     66:         //3
+
+# 5 0x004265BB in C:\Users\LEON\Desktop\work\прога.exe: main() at C:/Users/LEON/Desktop/work/прога.cpp (38):
+
+     36:     txCreateWindow (1000, 1000);
+     37: 
+=>   38:     programm ();
+     39: 
+     40:     }
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double) at C:\Users\LEON\Desktop\work\TXlib.h (10854):
+
+  10852:     {
+  10853: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>10854: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  10855: 
+  10856: $   if (width <= 0 || height <= 0)
+
+# 1 in bool {anonymous}::TX::txBitBlt(double, double, HDC, double, double) at C:\Users\LEON\Desktop\work\TXlib.h (10873):
+
+  10871: $1  if (_TX_TXWINDOW_FAILED()) return false;
+  10872: 
+=>10873: $   return txBitBlt (txDC(), xDest, yDest, 0, 0, sourceImage, xSource, ySource);
+  10874:     }
+  10875: 
+
+# 2 in void Hero::Draw() at C:\Users\LEON\Desktop\work\прога.cpp (129):
+
+    127: void Hero::Draw ()
+    128:     {
+=>  129:     txBitBlt (x, y, photo);
+    130: 
+    131:     txSetFillColor (color);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\LEON\Desktop\work\TXlib.h
+Compiled:	Oct 10 2017 21:23:13, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 10 2017 21:23:20
+
+Run file:	C:\Users\LEON\Desktop\work\прога.exe
+Directory:	C:\Users\LEON\Desktop\work
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\LEON\Desktop\work\прога.exe, файл: C:\Users\LEON\Desktop\work\TXlib.h, строка: 10882, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2BC (32-bit), Flags: CMdRe0, Thread: 0x1609C (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0041FA17 in C:\Users\LEON\Desktop\work\прога.exe: txTransparentBlt() at C:/Users/LEON/Desktop/work/TXlib.h (10882)
+# 1 0x00420370 in C:\Users\LEON\Desktop\work\прога.exe: txTransparentBlt() at C:/Users/LEON/Desktop/work/TXlib.h (10915)
+
+# 2 0x00426B42 in C:\Users\LEON\Desktop\work\прога.exe: Draw() at C:/Users/LEON/Desktop/work/прога.cpp (131):
+
+    129:     if (photo != 0)
+    130:         {
+=>  131:         txTransparentBlt (x - 50, y - 50, photo, TX_WHITE);
+    132: 
+    133:         }
+
+# 3 0x00426C15 in C:\Users\LEON\Desktop\work\прога.exe: Run() at C:/Users/LEON/Desktop/work/прога.cpp (148):
+
+    146: void Hero::Run ()
+    147:     {
+=>  148:     Draw    ();
+    149:     Physics ();
+    150:     Button  ();
+
+# 4 0x004267D8 in C:\Users\LEON\Desktop\work\прога.exe: programm() at C:/Users/LEON/Desktop/work/прога.cpp (60):
+
+     58: 
+     59:         //1
+=>   60:         Viktor.Run     ();
+     61: 
+     62: 
+
+# 5 0x004265A5 in C:\Users\LEON\Desktop\work\прога.exe: main() at C:/Users/LEON/Desktop/work/прога.cpp (38):
+
+     36:     txCreateWindow (1000, 1000);
+     37: 
+=>   38:     programm ();
+     39: 
+     40:     }
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at C:\Users\LEON\Desktop\work\TXlib.h (10882):
+
+  10880:     {
+  10881: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>10882: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  10883: 
+  10884: $   if (width <= 0 || height <= 0)
+
+# 1 in bool {anonymous}::TX::txTransparentBlt(double, double, HDC, COLORREF) at C:\Users\LEON\Desktop\work\TXlib.h (10915):
+
+  10913: $1  if (_TX_TXWINDOW_FAILED()) return false;
+  10914: 
+=>10915: $   return txTransparentBlt (txDC(), xDest, yDest, 0, 0, sourceImage, 0, 0, transColor);
+  10916:     }
+  10917: 
+
+# 2 in void Hero::Draw() at C:\Users\LEON\Desktop\work\прога.cpp (131):
+
+    129:     if (photo != 0)
+    130:         {
+=>  131:         txTransparentBlt (x - 50, y - 50, photo, TX_WHITE);
+    132: 
+    133:         }
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\LEON\Desktop\work\TXlib.h
+Compiled:	Oct 10 2017 21:59:01, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 10 2017 21:59:07
+
+Run file:	C:\Users\LEON\Desktop\work\прога.exe
+Directory:	C:\Users\LEON\Desktop\work
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\LEON\Desktop\work\прога.exe, файл: C:\Users\LEON\Desktop\work\TXlib.h, строка: 10882, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2BC (32-bit), Flags: CMdRe0, Thread: 0x16390 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0041FA17 in C:\Users\LEON\Desktop\work\прога.exe: txTransparentBlt() at C:/Users/LEON/Desktop/work/TXlib.h (10882)
+# 1 0x00420370 in C:\Users\LEON\Desktop\work\прога.exe: txTransparentBlt() at C:/Users/LEON/Desktop/work/TXlib.h (10915)
+
+# 2 0x00426B46 in C:\Users\LEON\Desktop\work\прога.exe: Draw() at C:/Users/LEON/Desktop/work/прога.cpp (131):
+
+    129:     if (photo != 0)
+    130:         {
+=>  131:         txTransparentBlt (x - 50, y - 50, photo, TX_WHITE);
+    132: 
+    133:         txDeleteDC (photo);
+
+# 3 0x00426C19 in C:\Users\LEON\Desktop\work\прога.exe: Run() at C:/Users/LEON/Desktop/work/прога.cpp (148):
+
+    146: void Hero::Run ()
+    147:     {
+=>  148:     Draw    ();
+    149:     Physics ();
+    150:     Button  ();
+
+# 4 0x004267D8 in C:\Users\LEON\Desktop\work\прога.exe: programm() at C:/Users/LEON/Desktop/work/прога.cpp (60):
+
+     58: 
+     59:         //1
+=>   60:         Viktor.Run     ();
+     61: 
+     62: 
+
+# 5 0x004265A5 in C:\Users\LEON\Desktop\work\прога.exe: main() at C:/Users/LEON/Desktop/work/прога.cpp (38):
+
+     36:     txCreateWindow (1000, 1000);
+     37: 
+=>   38:     programm ();
+     39: 
+     40:     }
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at C:\Users\LEON\Desktop\work\TXlib.h (10882):
+
+  10880:     {
+  10881: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>10882: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  10883: 
+  10884: $   if (width <= 0 || height <= 0)
+
+# 1 in bool {anonymous}::TX::txTransparentBlt(double, double, HDC, COLORREF) at C:\Users\LEON\Desktop\work\TXlib.h (10915):
+
+  10913: $1  if (_TX_TXWINDOW_FAILED()) return false;
+  10914: 
+=>10915: $   return txTransparentBlt (txDC(), xDest, yDest, 0, 0, sourceImage, 0, 0, transColor);
+  10916:     }
+  10917: 
+
+# 2 in void Hero::Draw() at C:\Users\LEON\Desktop\work\прога.cpp (131):
+
+    129:     if (photo != 0)
+    130:         {
+=>  131:         txTransparentBlt (x - 50, y - 50, photo, TX_WHITE);
+    132: 
+    133:         txDeleteDC (photo);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\LEON\Desktop\work\TXlib.h
+Compiled:	Oct 10 2017 22:00:01, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 10 2017 22:00:07
+
+Run file:	C:\Users\LEON\Desktop\work\прога.exe
+Directory:	C:\Users\LEON\Desktop\work
+
+--------------------------------------------------
