@@ -25,9 +25,9 @@ struct Hero
 
 void programm ();
 
-void Logic (Hero hero1, Hero hero2, int area);
+void Logic (Hero hero1, Hero *hero2, int area, int *LifeHero, int KillHero);
 
-
+void DrawPoint (int *LifeHero);
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -43,18 +43,23 @@ int main ()
 
 void programm ()
     {
-    Hero Viktor    = {300, 300, 2, 2, TX_RED,    25, txLoadImage ("carr.bmp"), VK_UP, VK_DOWN, VK_RIGHT, VK_LEFT, VK_SPACE};
-    Hero Romounald = {100, 100, 3, 2, TX_GREEN,  25, NULL,                     'W',   'S',     'D',      'A',     'Q'};
-    Hero Vlad      = {500, 200, 4, 3, TX_BLUE,   50, txLoadImage ("krosh.bmp")};
-    Hero Ilya      = {800, 200, 5, 5, TX_YELLOW, 50};
+    Hero Viktor    = {300, 300, 1,  1, TX_RED,    25, txLoadImage ("carr.bmp"),         VK_UP, VK_DOWN, VK_RIGHT, VK_LEFT, VK_SPACE};
+    Hero Romounald = {100, 100, 3,  2, TX_GREEN,  25, txLoadImage ("friandkrosha.bmp"), 'W',   'S',     'D',      'A',     'Q'};
+    Hero Vlad      = {500, 200, 4,  3, TX_BLUE,   50, txLoadImage ("krosh.bmp")};
+    Hero Ilya      = {800, 200, 5, 1, TX_YELLOW, 50, txLoadImage ("mars.bmp")};
+
+    int LifeHero   = 3;
+    int KillHero   = -1;
 
     HDC Fon        = txLoadImage ("fon.bmp");
 
+    txSelectFont   ("Arial", 35);
+
     while (!GetAsyncKeyState (VK_ESCAPE))
         {
-
         txSetFillColor (TX_BLACK);
         txClear        ();
+
 
         txBitBlt (0, 0, Fon);
 
@@ -71,20 +76,20 @@ void programm ()
         //4
         Ilya.Run       ();
 
-       // if ()
-           //{
-            //int life = 5
-            
-            //printf ("life = \n", life);
-            
-            Logic (Vlad, Viktor, 50);
-            //}
+        DrawPoint (&LifeHero);
+
+        Logic (Vlad, &Viktor, 50, &LifeHero, KillHero);
+
+        if (LifeHero < 1) break;
 
         txSleep        (10);
         }
 
     txDeleteDC (Vlad.photo);
+    txDeleteDC (Romounald.photo);
     txDeleteDC (Viktor.photo);
+    txDeleteDC (Ilya.photo);
+
     txDeleteDC (Fon);
     }
 
@@ -161,23 +166,39 @@ void Hero::Run ()
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-void Logic (Hero hero1, Hero hero2, int area)
+void Logic (Hero hero1, Hero *hero2, int area, int *LifeHero, int KillHero)
     {
-    double distance = sqrt ((hero2.x-hero1.x)*(hero2.x-hero1.x) + (hero2.y-hero1.y)*(hero2.y-hero1.y));
+    double distance = sqrt (((*hero2).x-hero1.x)*((*hero2).x-hero1.x) + ((*hero2).y-hero1.y)*((*hero2).y-hero1.y));
 
     //printf ("distance = %lg\n", distance);
 
 
     if (distance < area)
         {
-         txMessageBox ("Win Viktor");
+
+        *LifeHero = (*LifeHero + KillHero);
+
+        txMessageBox ("Win Viktor");
+
+
+        (*hero2).x  = rand()/65;
+        (*hero2).y  = rand()/65;
         }
 
     }
 
-
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+void DrawPoint (int *LifeHero)
+    {
+    char point [50] = "";
+
+    sprintf  (point, "Point = %i \r", *LifeHero);
+
+    txTextOut (0, 0, point);
+    }
+
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 /*
                                                 В какой ф. нам дан пар Y?
