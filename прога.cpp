@@ -11,6 +11,7 @@ struct Hero
     int color, size;
 
     HDC  photo;
+    void DeleteDC ();
 
     int up, down, right, left,  stop;
 
@@ -23,11 +24,15 @@ struct Hero
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+
 void programm ();
 
 void Logic (Hero hero1, Hero *hero2, int area, int *LifeHero, int KillHero);
 
 void DrawPoint (int *LifeHero);
+
+void Level (HDC *fon,              HDC *photohero1,          HDC *photohero2,          HDC *photohero3,          HDC *photohero4,
+            const char Fongame[], const char Imagehero1[],  const char Imagehero2[],  const char Imagehero3[],  const char Imagehero4[]);
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -50,6 +55,8 @@ void programm ()
 
     int LifeHero   = 3;
     int KillHero   = -1;
+
+    int NLevel     = 1;
 
     HDC Fon        = txLoadImage ("fon.bmp");
 
@@ -80,15 +87,31 @@ void programm ()
 
         Logic (Vlad, &Viktor, 50, &LifeHero, KillHero);
 
-        if (LifeHero < 1) break;
+        //if (LifeHero < 1) break;
+
+        if (LifeHero < 1)
+            {
+            LifeHero = 3;
+
+            Level (&Fon, &Viktor.photo, &Romounald.photo, &Vlad.photo, &Ilya.photo,
+                   "Arm.bmp", "MSI.bmp", "MacBook.bmp", "Lenovo.bmp", "Asus.bmp");
+
+            NLevel = NLevel + 1;
+
+            if (NLevel > 2) break;
+
+            }
+
+
+
 
         txSleep        (10);
         }
 
-    txDeleteDC (Vlad.photo);
-    txDeleteDC (Romounald.photo);
-    txDeleteDC (Viktor.photo);
-    txDeleteDC (Ilya.photo);
+    Vlad.DeleteDC      ();
+    Romounald.DeleteDC ();
+    Viktor.DeleteDC    ();
+    Ilya.DeleteDC      ();
 
     txDeleteDC (Fon);
     }
@@ -170,8 +193,6 @@ void Logic (Hero hero1, Hero *hero2, int area, int *LifeHero, int KillHero)
     {
     double distance = sqrt (((*hero2).x-hero1.x)*((*hero2).x-hero1.x) + ((*hero2).y-hero1.y)*((*hero2).y-hero1.y));
 
-    //printf ("distance = %lg\n", distance);
-
 
     if (distance < area)
         {
@@ -196,6 +217,44 @@ void DrawPoint (int *LifeHero)
     sprintf  (point, "Point = %i \r", *LifeHero);
 
     txTextOut (0, 0, point);
+    }
+
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+void Level (HDC *fon,              HDC *photohero1,          HDC *photohero2,          HDC *photohero3,          HDC *photohero4,
+            const char Fongame[], const char Imagehero1[],  const char Imagehero2[],  const char Imagehero3[],  const char Imagehero4[])
+    {
+
+    int Answer = txMessageBox ("Play?????","бнопня???", MB_YESNO);
+    if (Answer == IDYES)
+        {
+
+        txDeleteDC (*fon);
+
+        txDeleteDC (*photohero1);
+        txDeleteDC (*photohero2);
+        txDeleteDC (*photohero3);
+        txDeleteDC (*photohero4);
+
+        *fon        = txLoadImage (Fongame);
+
+        *photohero1 = txLoadImage (Imagehero1);
+
+        *photohero2 = txLoadImage (Imagehero2);
+
+        *photohero3 = txLoadImage (Imagehero3);
+
+        *photohero4 = txLoadImage (Imagehero4);
+
+        }
+
+    }
+
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+void Hero::DeleteDC ()
+    {
+    txDeleteDC (photo);
     }
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------
