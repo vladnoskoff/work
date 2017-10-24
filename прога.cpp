@@ -1,5 +1,5 @@
 
-#include "TXlib.h"
+#include "Books/TXlib.h"
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -48,17 +48,17 @@ int main ()
 
 void programm ()
     {
-    Hero Viktor    = {300, 300, 1, 1, TX_RED,    25, txLoadImage ("carr.bmp"),         VK_UP, VK_DOWN, VK_RIGHT, VK_LEFT, VK_SPACE};
-    Hero Romounald = {100, 100, 3, 2, TX_GREEN,  25, txLoadImage ("friandkrosha.bmp"), 'W',   'S',     'D',      'A',     'Q'};
-    Hero Vlad      = {500, 200, 4, 3, TX_BLUE,   50, txLoadImage ("krosh.bmp")};
-    Hero Ilya      = {800, 200, 1, 1, TX_YELLOW, 50, txLoadImage ("mars.bmp")};
+    Hero Viktor    = {300, 300, 1, 1, TX_RED,    25, txLoadImage ("Image/carr.bmp"),         VK_UP, VK_DOWN, VK_RIGHT, VK_LEFT, VK_SPACE};
+    Hero Romounald = {100, 100, 3, 2, TX_GREEN,  25, txLoadImage ("Image/friandkrosha.bmp"), 'W',   'S',     'D',      'A',     'Q'};
+    Hero Vlad      = {500, 200, 4, 3, TX_BLUE,   50, txLoadImage ("Image/krosh.bmp")};
+    Hero Ilya      = {800, 200, 1, 1, TX_YELLOW, 50, txLoadImage ("Image/mars.bmp")};
 
     int LifeHero   = 3;
     int KillHero   = -1;
 
     int NLevel     = 1;
 
-    HDC Fon        = txLoadImage ("fon.bmp");
+    HDC Fon        = txLoadImage ("Image/fon.bmp");
 
     txSelectFont   ("Arial", 35);
 
@@ -94,7 +94,7 @@ void programm ()
             LifeHero = 3;
 
             Level (&Fon, &Viktor.photo, &Romounald.photo, &Vlad.photo, &Ilya.photo,
-                   "Arm.bmp", "MSI.bmp", "MacBook.bmp", "Lenovo.bmp", "Asus.bmp");
+                   "Image/Arm.bmp", "Image/MSI.bmp", "Image/MacBook.bmp", "Image/Lenovo.bmp", "Image/Asus.bmp");
 
             NLevel = NLevel + 1;
 

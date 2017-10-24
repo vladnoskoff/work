@@ -268,3 +268,521 @@ Run file:	C:\Users\LEON\Desktop\work\прога.exe
 Directory:	C:\Users\LEON\Desktop\work
 
 --------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\LEON\Desktop\work\прога.exe, файл: C:\Users\LEON\Desktop\work\Books/TXlib.h, строка: 10854, функция: bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FF2BC (32-bit), Flags: CMdRe0, Thread: 0x16F4 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0041F4BC in C:\Users\LEON\Desktop\work\прога.exe: txBitBlt() at C:/Users/LEON/Desktop/work/Books/TXlib.h (10854)
+# 1 0x0041F9C7 in C:\Users\LEON\Desktop\work\прога.exe: txBitBlt() at C:/Users/LEON/Desktop/work/Books/TXlib.h (10873)
+
+# 2 0x00426ACC in C:\Users\LEON\Desktop\work\прога.exe: programm() at C:/Users/LEON/Desktop/work/прога.cpp (71):
+
+     69: 
+     70: 
+=>   71:         txBitBlt (0, 0, Fon);
+     72: 
+     73:         //1
+
+# 3 0x004266EF in C:\Users\LEON\Desktop\work\прога.exe: main() at C:/Users/LEON/Desktop/work/прога.cpp (43):
+
+     41:     txCreateWindow (1000, 1000);
+     42: 
+=>   43:     programm ();
+     44: 
+     45:     }
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double) at C:\Users\LEON\Desktop\work\Books/TXlib.h (10854):
+
+  10852:     {
+  10853: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>10854: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  10855: 
+  10856: $   if (width <= 0 || height <= 0)
+
+# 1 in bool {anonymous}::TX::txBitBlt(double, double, HDC, double, double) at C:\Users\LEON\Desktop\work\Books/TXlib.h (10873):
+
+  10871: $1  if (_TX_TXWINDOW_FAILED()) return false;
+  10872: 
+=>10873: $   return txBitBlt (txDC(), xDest, yDest, 0, 0, sourceImage, xSource, ySource);
+  10874:     }
+  10875: 
+
+# 2 in void programm() at C:\Users\LEON\Desktop\work\прога.cpp (71):
+
+     69: 
+     70: 
+=>   71:         txBitBlt (0, 0, Fon);
+     72: 
+     73:         //1
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\LEON\Desktop\work\Books/TXlib.h
+Compiled:	Oct 24 2017 18:10:27, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 24 2017 18:10:42
+
+Run file:	C:\Users\LEON\Desktop\work\прога.exe
+Directory:	C:\Users\LEON\Desktop\work
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\LEON\Desktop\work\прога.exe, файл: C:\Users\LEON\Desktop\work\Books\TXlib.h, строка: 10854, функция: bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FF2BC (32-bit), Flags: CMdRe0, Thread: 0x13CC (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0041F4BC in C:\Users\LEON\Desktop\work\прога.exe: txBitBlt() at C:/Users/LEON/Desktop/work/Books/TXlib.h (10854)
+# 1 0x0041F9C7 in C:\Users\LEON\Desktop\work\прога.exe: txBitBlt() at C:/Users/LEON/Desktop/work/Books/TXlib.h (10873)
+
+# 2 0x00426ACC in C:\Users\LEON\Desktop\work\прога.exe: programm() at C:/Users/LEON/Desktop/work/прога.cpp (71):
+
+     69: 
+     70: 
+=>   71:         txBitBlt (0, 0, Fon);
+     72: 
+     73:         //1
+
+# 3 0x004266EF in C:\Users\LEON\Desktop\work\прога.exe: main() at C:/Users/LEON/Desktop/work/прога.cpp (43):
+
+     41:     txCreateWindow (1000, 1000);
+     42: 
+=>   43:     programm ();
+     44: 
+     45:     }
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double) at C:\Users\LEON\Desktop\work\Books\TXlib.h (10854):
+
+  10852:     {
+  10853: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>10854: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  10855: 
+  10856: $   if (width <= 0 || height <= 0)
+
+# 1 in bool {anonymous}::TX::txBitBlt(double, double, HDC, double, double) at C:\Users\LEON\Desktop\work\Books\TXlib.h (10873):
+
+  10871: $1  if (_TX_TXWINDOW_FAILED()) return false;
+  10872: 
+=>10873: $   return txBitBlt (txDC(), xDest, yDest, 0, 0, sourceImage, xSource, ySource);
+  10874:     }
+  10875: 
+
+# 2 in void programm() at C:\Users\LEON\Desktop\work\прога.cpp (71):
+
+     69: 
+     70: 
+=>   71:         txBitBlt (0, 0, Fon);
+     72: 
+     73:         //1
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\LEON\Desktop\work\Books\TXlib.h
+Compiled:	Oct 24 2017 18:11:30, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 24 2017 18:11:35
+
+Run file:	C:\Users\LEON\Desktop\work\прога.exe
+Directory:	C:\Users\LEON\Desktop\work
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\LEON\Desktop\work\прога.exe, файл: C:\Users\LEON\Desktop\work\Books\TXlib.h, строка: 10854, функция: bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FF2BC (32-bit), Flags: CMdRe0, Thread: 0xD68 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0041F4BC in C:\Users\LEON\Desktop\work\прога.exe: txBitBlt() at C:/Users/LEON/Desktop/work/Books/TXlib.h (10854)
+# 1 0x0041F9C7 in C:\Users\LEON\Desktop\work\прога.exe: txBitBlt() at C:/Users/LEON/Desktop/work/Books/TXlib.h (10873)
+
+# 2 0x00426ACC in C:\Users\LEON\Desktop\work\прога.exe: programm() at C:/Users/LEON/Desktop/work/прога.cpp (71):
+
+     69: 
+     70: 
+=>   71:         txBitBlt (0, 0, Fon);
+     72: 
+     73:         //1
+
+# 3 0x004266EF in C:\Users\LEON\Desktop\work\прога.exe: main() at C:/Users/LEON/Desktop/work/прога.cpp (43):
+
+     41:     txCreateWindow (1000, 1000);
+     42: 
+=>   43:     programm ();
+     44: 
+     45:     }
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double) at C:\Users\LEON\Desktop\work\Books\TXlib.h (10854):
+
+  10852:     {
+  10853: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>10854: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  10855: 
+  10856: $   if (width <= 0 || height <= 0)
+
+# 1 in bool {anonymous}::TX::txBitBlt(double, double, HDC, double, double) at C:\Users\LEON\Desktop\work\Books\TXlib.h (10873):
+
+  10871: $1  if (_TX_TXWINDOW_FAILED()) return false;
+  10872: 
+=>10873: $   return txBitBlt (txDC(), xDest, yDest, 0, 0, sourceImage, xSource, ySource);
+  10874:     }
+  10875: 
+
+# 2 in void programm() at C:\Users\LEON\Desktop\work\прога.cpp (71):
+
+     69: 
+     70: 
+=>   71:         txBitBlt (0, 0, Fon);
+     72: 
+     73:         //1
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\LEON\Desktop\work\Books\TXlib.h
+Compiled:	Oct 24 2017 18:11:54, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 24 2017 18:11:59
+
+Run file:	C:\Users\LEON\Desktop\work\прога.exe
+Directory:	C:\Users\LEON\Desktop\work
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\LEON\Desktop\work\прога.exe, файл: C:\Users\LEON\Desktop\work\Books/TXlib.h, строка: 10854, функция: bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FF2BC (32-bit), Flags: CMdRe0, Thread: 0x1720 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0041F4BC in C:\Users\LEON\Desktop\work\прога.exe: txBitBlt() at C:/Users/LEON/Desktop/work/Books/TXlib.h (10854)
+# 1 0x0041F9C7 in C:\Users\LEON\Desktop\work\прога.exe: txBitBlt() at C:/Users/LEON/Desktop/work/Books/TXlib.h (10873)
+
+# 2 0x00426ACC in C:\Users\LEON\Desktop\work\прога.exe: programm() at C:/Users/LEON/Desktop/work/прога.cpp (71):
+
+     69: 
+     70: 
+=>   71:         txBitBlt (0, 0, Fon);
+     72: 
+     73:         //1
+
+# 3 0x004266EF in C:\Users\LEON\Desktop\work\прога.exe: main() at C:/Users/LEON/Desktop/work/прога.cpp (43):
+
+     41:     txCreateWindow (1000, 1000);
+     42: 
+=>   43:     programm ();
+     44: 
+     45:     }
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double) at C:\Users\LEON\Desktop\work\Books/TXlib.h (10854):
+
+  10852:     {
+  10853: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>10854: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  10855: 
+  10856: $   if (width <= 0 || height <= 0)
+
+# 1 in bool {anonymous}::TX::txBitBlt(double, double, HDC, double, double) at C:\Users\LEON\Desktop\work\Books/TXlib.h (10873):
+
+  10871: $1  if (_TX_TXWINDOW_FAILED()) return false;
+  10872: 
+=>10873: $   return txBitBlt (txDC(), xDest, yDest, 0, 0, sourceImage, xSource, ySource);
+  10874:     }
+  10875: 
+
+# 2 in void programm() at C:\Users\LEON\Desktop\work\прога.cpp (71):
+
+     69: 
+     70: 
+=>   71:         txBitBlt (0, 0, Fon);
+     72: 
+     73:         //1
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\LEON\Desktop\work\Books/TXlib.h
+Compiled:	Oct 24 2017 18:13:04, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 24 2017 18:13:08
+
+Run file:	C:\Users\LEON\Desktop\work\прога.exe
+Directory:	C:\Users\LEON\Desktop\work
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\LEON\Desktop\work\прога.exe, файл: C:\Users\LEON\Desktop\work\Books/TXlib.h, строка: 10854, функция: bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FF2BC (32-bit), Flags: CMdRe0, Thread: 0x2030 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0041F4BC in C:\Users\LEON\Desktop\work\прога.exe: txBitBlt() at C:/Users/LEON/Desktop/work/Books/TXlib.h (10854)
+# 1 0x0041F9C7 in C:\Users\LEON\Desktop\work\прога.exe: txBitBlt() at C:/Users/LEON/Desktop/work/Books/TXlib.h (10873)
+
+# 2 0x00426ACC in C:\Users\LEON\Desktop\work\прога.exe: programm() at C:/Users/LEON/Desktop/work/прога.cpp (71):
+
+     69: 
+     70: 
+=>   71:         txBitBlt (0, 0, Fon);
+     72: 
+     73:         //1
+
+# 3 0x004266EF in C:\Users\LEON\Desktop\work\прога.exe: main() at C:/Users/LEON/Desktop/work/прога.cpp (43):
+
+     41:     txCreateWindow (1000, 1000);
+     42: 
+=>   43:     programm ();
+     44: 
+     45:     }
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double) at C:\Users\LEON\Desktop\work\Books/TXlib.h (10854):
+
+  10852:     {
+  10853: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>10854: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  10855: 
+  10856: $   if (width <= 0 || height <= 0)
+
+# 1 in bool {anonymous}::TX::txBitBlt(double, double, HDC, double, double) at C:\Users\LEON\Desktop\work\Books/TXlib.h (10873):
+
+  10871: $1  if (_TX_TXWINDOW_FAILED()) return false;
+  10872: 
+=>10873: $   return txBitBlt (txDC(), xDest, yDest, 0, 0, sourceImage, xSource, ySource);
+  10874:     }
+  10875: 
+
+# 2 in void programm() at C:\Users\LEON\Desktop\work\прога.cpp (71):
+
+     69: 
+     70: 
+=>   71:         txBitBlt (0, 0, Fon);
+     72: 
+     73:         //1
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\LEON\Desktop\work\Books/TXlib.h
+Compiled:	Oct 24 2017 18:13:43, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 24 2017 18:13:47
+
+Run file:	C:\Users\LEON\Desktop\work\прога.exe
+Directory:	C:\Users\LEON\Desktop\work
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\LEON\Desktop\work\прога.exe, файл: C:\Users\LEON\Desktop\work\Books/TXlib.h, строка: 10854, функция: bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#2: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FF2BC (32-bit), Flags: CMdRe0, Thread: 0x2030 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0041F4BC in C:\Users\LEON\Desktop\work\прога.exe: txBitBlt() at C:/Users/LEON/Desktop/work/Books/TXlib.h (10854)
+# 1 0x0041F9C7 in C:\Users\LEON\Desktop\work\прога.exe: txBitBlt() at C:/Users/LEON/Desktop/work/Books/TXlib.h (10873)
+
+# 2 0x00426ACC in C:\Users\LEON\Desktop\work\прога.exe: programm() at C:/Users/LEON/Desktop/work/прога.cpp (71):
+
+     69: 
+     70: 
+=>   71:         txBitBlt (0, 0, Fon);
+     72: 
+     73:         //1
+
+# 3 0x004266EF in C:\Users\LEON\Desktop\work\прога.exe: main() at C:/Users/LEON/Desktop/work/прога.cpp (43):
+
+     41:     txCreateWindow (1000, 1000);
+     42: 
+=>   43:     programm ();
+     44: 
+     45:     }
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double) at C:\Users\LEON\Desktop\work\Books/TXlib.h (10854):
+
+  10852:     {
+  10853: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>10854: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  10855: 
+  10856: $   if (width <= 0 || height <= 0)
+
+# 1 in bool {anonymous}::TX::txBitBlt(double, double, HDC, double, double) at C:\Users\LEON\Desktop\work\Books/TXlib.h (10873):
+
+  10871: $1  if (_TX_TXWINDOW_FAILED()) return false;
+  10872: 
+=>10873: $   return txBitBlt (txDC(), xDest, yDest, 0, 0, sourceImage, xSource, ySource);
+  10874:     }
+  10875: 
+
+# 2 in void programm() at C:\Users\LEON\Desktop\work\прога.cpp (71):
+
+     69: 
+     70: 
+=>   71:         txBitBlt (0, 0, Fon);
+     72: 
+     73:         //1
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\LEON\Desktop\work\Books/TXlib.h
+Compiled:	Oct 24 2017 18:13:43, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 24 2017 18:13:47
+
+Run file:	C:\Users\LEON\Desktop\work\прога.exe
+Directory:	C:\Users\LEON\Desktop\work
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\LEON\Desktop\work\прога.exe, файл: C:\Users\LEON\Desktop\work\Books/TXlib.h, строка: 10854, функция: bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#3: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FF2BC (32-bit), Flags: CMdRe0, Thread: 0x2030 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0041F4BC in C:\Users\LEON\Desktop\work\прога.exe: txBitBlt() at C:/Users/LEON/Desktop/work/Books/TXlib.h (10854)
+# 1 0x0041F9C7 in C:\Users\LEON\Desktop\work\прога.exe: txBitBlt() at C:/Users/LEON/Desktop/work/Books/TXlib.h (10873)
+
+# 2 0x00426ACC in C:\Users\LEON\Desktop\work\прога.exe: programm() at C:/Users/LEON/Desktop/work/прога.cpp (71):
+
+     69: 
+     70: 
+=>   71:         txBitBlt (0, 0, Fon);
+     72: 
+     73:         //1
+
+# 3 0x004266EF in C:\Users\LEON\Desktop\work\прога.exe: main() at C:/Users/LEON/Desktop/work/прога.cpp (43):
+
+     41:     txCreateWindow (1000, 1000);
+     42: 
+=>   43:     programm ();
+     44: 
+     45:     }
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double) at C:\Users\LEON\Desktop\work\Books/TXlib.h (10854):
+
+  10852:     {
+  10853: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>10854: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  10855: 
+  10856: $   if (width <= 0 || height <= 0)
+
+# 1 in bool {anonymous}::TX::txBitBlt(double, double, HDC, double, double) at C:\Users\LEON\Desktop\work\Books/TXlib.h (10873):
+
+  10871: $1  if (_TX_TXWINDOW_FAILED()) return false;
+  10872: 
+=>10873: $   return txBitBlt (txDC(), xDest, yDest, 0, 0, sourceImage, xSource, ySource);
+  10874:     }
+  10875: 
+
+# 2 in void programm() at C:\Users\LEON\Desktop\work\прога.cpp (71):
+
+     69: 
+     70: 
+=>   71:         txBitBlt (0, 0, Fon);
+     72: 
+     73:         //1
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\LEON\Desktop\work\Books/TXlib.h
+Compiled:	Oct 24 2017 18:13:43, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 24 2017 18:13:47
+
+Run file:	C:\Users\LEON\Desktop\work\прога.exe
+Directory:	C:\Users\LEON\Desktop\work
+
+--------------------------------------------------
