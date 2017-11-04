@@ -12,10 +12,10 @@ struct Hero
 
     int color, size;
 
+    int up, down, right, left,  stop;
+
     HDC  photo;
     void DeleteDC ();
-
-    int up, down, right, left,  stop;
 
     void Button   ();
     void Physics  ();
@@ -35,6 +35,8 @@ void DrawPoint (int *LifeHero);
 void Level (HDC *fon,              HDC *photohero1,          HDC *photohero2,          HDC *photohero3,          HDC *photohero4,
             const char Fongame[],  const char Imagehero1[],  const char Imagehero2[],  const char Imagehero3[],  const char Imagehero4[]);
 
+void LoadLevel (int NLevel, HDC *fon, HDC *photohero1, HDC *photohero2, HDC *photohero3, HDC *photohero4);
+
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 int main ()
@@ -49,12 +51,12 @@ int main ()
 
 void programm ()
     {
-//                                                                                                                 steps                 -
-//    Name             x    y   vx  vy   color    size            photo                         ------------------------------------------
-    Hero Viktor    = {300, 300,  1, 1,  TX_RED,    25,  txLoadImage ("Image/carr.bmp"),         VK_UP, VK_DOWN, VK_RIGHT, VK_LEFT, VK_SPACE};
-    Hero Romounald = {100, 100,  3, 2,  TX_GREEN,  25,  txLoadImage ("Image/friandkrosha.bmp"), 'W',   'S',     'D',      'A',     'Q'};
-    Hero Vlad      = {500, 200,  4, 3,  TX_BLUE,   50,  txLoadImage ("Image/krosh.bmp")};
-    Hero Ilya      = {800, 200,  1, 1,  TX_YELLOW, 50,  txLoadImage ("Image/mars.bmp")};
+//                                                                       steps
+//    Name             x    y   vx  vy   color    size   ------------------------------------------    photo
+    Hero Viktor    = {300, 300,  1, 1,  TX_RED,    25,  VK_UP, VK_DOWN, VK_RIGHT, VK_LEFT, VK_SPACE};
+    Hero Romounald = {100, 100,  3, 2,  TX_GREEN,  25,  'W',   'S',     'D',      'A',     'Q'};
+    Hero Vlad      = {500, 200,  4, 3,  TX_BLUE,   50};
+    Hero Ilya      = {800, 200,  1, 1,  TX_YELLOW, 50};
 
 //жизни игрока
     int LifeHero   = 3;
@@ -64,6 +66,8 @@ void programm ()
     int NLevel     = 1;
 
     HDC Fon        = txLoadImage ("Image/fon.bmp");
+
+    LoadLevel (NLevel, &Fon, &Viktor.photo, &Romounald.photo, &Vlad.photo, &Ilya.photo);
 
 //шрифт для всех текстов
     txSelectFont   ("Arial", 35);
@@ -93,20 +97,24 @@ void programm ()
 
         Logic (Vlad, &Viktor, 50, &LifeHero, KillHero);
 
-//переход на второй уровень
+
         if (LifeHero < 1)
             {
-            LifeHero = 3;
+            int Answer = txMessageBox ("Play?????","ВОПРОС???", MB_YESNO);
 
-            Level (&Fon, &Viktor.photo, &Romounald.photo, &Vlad.photo, &Ilya.photo,
-                   "Image/Arm.bmp", "Image/MSI.bmp", "Image/MacBook.bmp", "Image/Lenovo.bmp", "Image/Asus.bmp");
+            if (Answer != IDYES) break;
+
+            LifeHero = 3;
 
             NLevel = NLevel + 1;
 
-            if (NLevel > 2) break;
+            if (NLevel > 3) NLevel = 1;
+
+            LoadLevel (NLevel, &Fon, &Viktor.photo, &Romounald.photo, &Vlad.photo, &Ilya.photo);
 
             }
 
+        printf ("NLevel = %i\n", NLevel);
         txSleep        (10);
         }
 
@@ -228,28 +236,22 @@ void Level (HDC *fon,              HDC *photohero1,          HDC *photohero2,   
             const char Fongame[], const char Imagehero1[],  const char Imagehero2[],  const char Imagehero3[],  const char Imagehero4[])
     {
 
-    int Answer = txMessageBox ("Play?????","ВОПРОС???", MB_YESNO);
-    if (Answer == IDYES)
-        {
+    txDeleteDC (*fon);
 
-        txDeleteDC (*fon);
+    txDeleteDC (*photohero1);
+    txDeleteDC (*photohero2);
+    txDeleteDC (*photohero3);
+    txDeleteDC (*photohero4);
 
-        txDeleteDC (*photohero1);
-        txDeleteDC (*photohero2);
-        txDeleteDC (*photohero3);
-        txDeleteDC (*photohero4);
+    *fon        = txLoadImage (Fongame);
 
-        *fon        = txLoadImage (Fongame);
+    *photohero1 = txLoadImage (Imagehero1);
 
-        *photohero1 = txLoadImage (Imagehero1);
+    *photohero2 = txLoadImage (Imagehero2);
 
-        *photohero2 = txLoadImage (Imagehero2);
+    *photohero3 = txLoadImage (Imagehero3);
 
-        *photohero3 = txLoadImage (Imagehero3);
-
-        *photohero4 = txLoadImage (Imagehero4);
-
-        }
+    *photohero4 = txLoadImage (Imagehero4);
 
     }
 
@@ -258,6 +260,36 @@ void Level (HDC *fon,              HDC *photohero1,          HDC *photohero2,   
 void Hero::DeleteDC ()
     {
     txDeleteDC (photo);
+    }
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+void LoadLevel (int NLevel, HDC *fon, HDC *photohero1, HDC *photohero2, HDC *photohero3, HDC *photohero4)
+    {
+    if (NLevel == 1)
+            {
+
+            Level (fon,             photohero1,       photohero2,               photohero3,        photohero4,
+                   "Image/fon.bmp", "Image/carr.bmp", "Image/friandkrosha.bmp", "Image/krosh.bmp", "Image/mars.bmp");
+
+            }
+
+    if (NLevel == 2)
+            {
+
+            Level (fon,              photohero1,      photohero2,      photohero3,        photohero4,
+                   "Image/Farm.bmp", "Image/Cow.bmp", "Image/Fly.bmp", "Image/Knife.bmp", "Image/Pig.bmp");
+
+            }
+
+    if (NLevel == 3)
+            {
+
+            Level (fon,             photohero1,      photohero2,          photohero3,         photohero4,
+                   "Image/Arm.bmp", "Image/MSI.bmp", "Image/MacBook.bmp", "Image/Lenovo.bmp", "Image/Asus.bmp");
+
+            }
+
     }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
