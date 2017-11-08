@@ -19,8 +19,8 @@ struct Hero
 
     void Button   ();
     void Physics  ();
-    void Draw     ();
-    void Run      ();
+    void Draw     (int t);
+    void Run      (int t);
 
     };
 
@@ -65,9 +65,13 @@ void programm ()
 //счетчик уровней
     int NLevel     = 1;
 
-    HDC Fon        = txLoadImage ("Image/fon.bmp");
+//
+    int t          = 0;
+
+    HDC Fon        = NULL;
 
     LoadLevel (NLevel, &Fon, &Viktor.photo, &Romounald.photo, &Vlad.photo, &Ilya.photo);
+
 
 //шрифт для всех текстов
     txSelectFont   ("Arial", 35);
@@ -79,19 +83,20 @@ void programm ()
         txClear        ();
 
 
-        txBitBlt (0, 0, Fon);
+        txBitBlt (txDC(), 0, 0, 1000, 1000, Fon, t%2*1000, 0);
+
 
         //1
-        Viktor.Run     ();
+        Viktor.Run     (t);
 
         //2
-        Romounald.Run  ();
+        Romounald.Run  (t);
 
         //3
-        Vlad.Run       ();
+        Vlad.Run       (t);
 
         //4
-        Ilya.Run       ();
+        Ilya.Run       (t);
 
         DrawPoint (&LifeHero);
 
@@ -100,7 +105,7 @@ void programm ()
 
         if (LifeHero < 1)
             {
-            int Answer = txMessageBox ("Play?????","ВОПРОС???", MB_YESNO);
+            int Answer = txMessageBox ("Play ?????","ВОПРОС???", MB_YESNO);
 
             if (Answer != IDYES) break;
 
@@ -114,8 +119,11 @@ void programm ()
 
             }
 
-        printf ("NLevel = %i\n", NLevel);
-        txSleep        (10);
+        printf ("              Level = %i\r", NLevel);
+
+        t++;
+
+        txSleep        (100);
         }
 
 //удаление фото после завершения
@@ -170,15 +178,17 @@ void Hero::Button ()
     if (GetAsyncKeyState (left))  (vx)--;
     if (GetAsyncKeyState (right)) (vx)++;
     if (GetAsyncKeyState (stop))  (vx) = (vy) = 0;
+
     }
 
 //Рисование шарика-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-void Hero::Draw ()
-    {
+void Hero::Draw (int t)
+    {// надо настроить рисование
     if (photo != 0)
         {
-        txTransparentBlt (x - 50, y - 50, photo, TX_WHITE);
+        //txTransparentBlt (txDC(), x, y, 200, 150, photo, t%2*100, 0);
+        txBitBlt (txDC(), x, y, 200, 150, photo, t%2*100, 0);
         }
 
     if (photo == 0)
@@ -191,9 +201,9 @@ void Hero::Draw ()
 
 //Отвечает за всего героя------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-void Hero::Run ()
+void Hero::Run (int t)
     {
-    Draw    ();
+    Draw    (t);
     Physics ();
     Button  ();
     }
@@ -269,24 +279,24 @@ void LoadLevel (int NLevel, HDC *fon, HDC *photohero1, HDC *photohero2, HDC *pho
     if (NLevel == 1)
             {
 
-            Level (fon,             photohero1,       photohero2,               photohero3,        photohero4,
-                   "Image/fon.bmp", "Image/carr.bmp", "Image/friandkrosha.bmp", "Image/krosh.bmp", "Image/mars.bmp");
+            Level (fon,              photohero1,        photohero2,                photohero3,         photohero4,
+                   "Image/fon3.bmp", "Image/carr2.bmp", "Image/friandkrosha2.bmp", "Image/krosh2.bmp", "Image/mars2.bmp");
 
             }
 
     if (NLevel == 2)
             {
 
-            Level (fon,              photohero1,      photohero2,      photohero3,        photohero4,
-                   "Image/Farm.bmp", "Image/Cow.bmp", "Image/Fly.bmp", "Image/Knife.bmp", "Image/Pig.bmp");
+            Level (fon,               photohero1,       photohero2,       photohero3,         photohero4,
+                   "Image/Farm2.bmp", "Image/Cow2.bmp", "Image/Fly2.bmp", "Image/Knife2.bmp", "Image/Pig2.bmp");
 
             }
 
     if (NLevel == 3)
             {
 
-            Level (fon,             photohero1,      photohero2,          photohero3,         photohero4,
-                   "Image/Arm.bmp", "Image/MSI.bmp", "Image/MacBook.bmp", "Image/Lenovo.bmp", "Image/Asus.bmp");
+            Level (fon,              photohero1,       photohero2,           photohero3,          photohero4,
+                   "Image/Arm2.bmp", "Image/MSI2.bmp", "Image/MacBook2.bmp", "Image/Lenovo2.bmp", "Image/Asus2.bmp");
 
             }
 

@@ -1,0 +1,8 @@
+#include "Books/TXlib.h"
+
+int main ()
+    {
+    txCreateWindow (1000, 1000);
+    
+    HDC Fon = (txL);
+    }
