@@ -1,0 +1,50 @@
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\admen\Desktop\work\Pakmen.exe, файл: C:\Users\admen\Desktop\work\Books/TXlib.h, строка: 10323, функция: POINT {anonymous}::TX::txGetExtent(HDC),
+
+Сообщение: Параметр "dc" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2BC (32-bit), Flags: CMdRe0, Thread: 0x1E84 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 8 0x77AB4A47 in C:\Windows\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+# 9 0x77AB4A17 in C:\Windows\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in POINT {anonymous}::TX::txGetExtent(HDC) at C:\Users\admen\Desktop\work\Books/TXlib.h (10323):
+
+  10321: $1  POINT err = {-1, -1};
+  10322: 
+=>10323: $   if (_TX_DEFAULT_HDC_FAILED (dc)) return err;
+  10324: 
+  10325: $   BITMAP bmap = {0};
+
+# 1 in int pakman() at C:\Users\admen\Desktop\work\Pakmen.cpp (48):
+
+     46:         txClear ();
+     47: 
+=>   48:         txTransparentBlt (txDC(), 0, 0, 1000, 1000, fon, 0, 0, TX_WHITE);
+     49: 
+     50:         Pacman.heroall ();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\admen\Desktop\work\Books/TXlib.h
+Compiled:	Dec  5 2017 21:47:29, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Dec 05 2017 21:47:31
+
+Run file:	C:\Users\admen\Desktop\work\Pakmen.exe
+Directory:	C:\Users\admen\Desktop\work
+
+--------------------------------------------------

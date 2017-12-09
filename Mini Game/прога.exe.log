@@ -786,3 +786,53 @@ Run file:	C:\Users\LEON\Desktop\work\прога.exe
 Directory:	C:\Users\LEON\Desktop\work
 
 --------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\admen\Desktop\work\прога.exe, файл: C:\Users\admen\Desktop\work\Books/TXlib.h, строка: 10854, функция: bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FF2BC (32-bit), Flags: CMdRe0, Thread: 0x3A40 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 5 0x77AB4A47 in C:\Windows\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+# 6 0x77AB4A17 in C:\Windows\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double) at C:\Users\admen\Desktop\work\Books/TXlib.h (10854):
+
+  10852:     {
+  10853: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>10854: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  10855: 
+  10856: $   if (width <= 0 || height <= 0)
+
+# 1 in void programm() at C:\Users\admen\Desktop\work\прога.cpp (65):
+
+     63:         txClear        ();
+     64: 
+=>   65:         txBitBlt (txDC(), 0, 0, 1000, 1000, Fon, t%2*1000, 0);
+     66: 
+     67: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\admen\Desktop\work\Books/TXlib.h
+Compiled:	Dec  2 2017 21:06:45, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Dec 02 2017 21:06:48
+
+Run file:	C:\Users\admen\Desktop\work\прога.exe
+Directory:	C:\Users\admen\Desktop\work
+
+--------------------------------------------------

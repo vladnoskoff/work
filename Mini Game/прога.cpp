@@ -2,27 +2,7 @@
 //библиотека
 #include "Books/TXlib.h"
 
-//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-//структура
-struct Hero
-    {
-    int x , y;
-    int vx, vy;
-
-    int color, size;
-
-    int up, down, right, left,  stop;
-
-    HDC  photo;
-    void DeleteDC ();
-
-    void Button   ();
-    void Physics  ();
-    void Draw     ();
-    void Run      ();
-
-    };
+#include "Books/TXVlad.h"
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -82,21 +62,21 @@ void programm ()
         txSetFillColor (TX_BLACK);
         txClear        ();
 
-
         txBitBlt (txDC(), 0, 0, 1000, 1000, Fon, t%2*1000, 0);
 
 
         //1
-        Viktor.Run     ();
+        Viktor.Run     (t);
 
         //2
-        Romounald.Run  ();
+        Romounald.Run  (t);
 
         //3
-        Vlad.Run       ();
+        Vlad.Run       (t);
+
 
         //4
-        Ilya.Run       ();
+        Ilya.Run       (t);
 
         DrawPoint (&LifeHero);
 
@@ -123,7 +103,7 @@ void programm ()
 
         t++;
 
-        txSleep        (10);
+        txSleep        (80);
         }
 
 //удаление фото после завершения
@@ -133,83 +113,6 @@ void programm ()
     Ilya.DeleteDC      ();
 
     txDeleteDC (Fon);
-    }
-
-//Отвичает за движение---------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-void Hero::Physics ()
-    {
-    x = x + vx;
-    y = y + vy;
-
-    if (x < 50)
-        {
-        x  = 50;
-        vx = -vx;
-        }
-
-    if (y < 50)
-        {
-        y  = 50;
-        vy = -vy;
-        }
-
-    if (x > 950)
-        {
-        x  = 950;
-        vx = -vx;
-        }
-
-    if (y > 950)
-        {
-        y  = 950;
-        vy = -vy;
-        }
-
-    }
-
-//Клавиши управления-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-void Hero::Button ()
-    {
-
-    if (GetAsyncKeyState (up))    (vy)--;
-    if (GetAsyncKeyState (down))  (vy)++;
-    if (GetAsyncKeyState (left))  (vx)--;
-    if (GetAsyncKeyState (right)) (vx)++;
-    if (GetAsyncKeyState (stop))  (vx) = (vy) = 0;
-
-    }
-
-//Рисование шарика-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-void Hero::Draw ()
-    {// надо настроить рисование 
-//    if (photo != 0)
-//        {
-//        txTransparentBlt (txDC(), x - 50, y - 50, photo, 0, 0);
-//        }
-
-    if (photo != 0)
-        {
-        txBitBlt (txDC(), 0, 0, 200, 150, photo, 100, 150);
-        }
-
-    if (photo == 0)
-        {
-        txSetFillColor (color);
-        txCircle       (x,  y, size);
-        }
-
-    }
-
-//Отвечает за всего героя------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-void Hero::Run ()
-    {
-    Draw    ();
-    Physics ();
-    Button  ();
     }
 
 //Отвечает за касания героя с героем-------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -231,17 +134,6 @@ void Logic (Hero hero1, Hero *hero2, int area, int *LifeHero, int KillHero)
         (*hero2).y  = rand()/65;
         }
 
-    }
-
-//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-void DrawPoint (int *LifeHero)
-    {
-    char point [50] = "";
-
-    sprintf  (point, "Point = %i \r", *LifeHero);
-
-    txTextOut (0, 0, point);
     }
 
 //Отвечает за переход на второй уровень----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -269,38 +161,31 @@ void Level (HDC *fon,              HDC *photohero1,          HDC *photohero2,   
 
     }
 
-//Отвечает за удаление фото после завершения-----------------------------------------------------------------------------------------------------------------------------------------------
-
-void Hero::DeleteDC ()
-    {
-    txDeleteDC (photo);
-    }
-
-//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//Отвечает за загрузку всех фото на всех уровнях-------------------------------------------------------------------------------------------------------------------------------------------
 
 void LoadLevel (int NLevel, HDC *fon, HDC *photohero1, HDC *photohero2, HDC *photohero3, HDC *photohero4)
     {
     if (NLevel == 1)
             {
 
-            Level (fon,             photohero1,       photohero2,               photohero3,        photohero4,
-                   "Image/fon3.bmp", "Image/carr2.bmp", "Image/friandkrosha.bmp", "Image/krosh.bmp", "Image/mars.bmp");
+            Level (fon,                    photohero1,              photohero2,                      photohero3,               photohero4,
+                   "Image/play1/fon3.bmp", "Image/play1/carr2.bmp", "Image/play1/friandkrosha2.bmp", "Image/play1/krosh2.bmp", "Image/play1/mars2.bmp");
 
             }
 
     if (NLevel == 2)
             {
 
-            Level (fon,              photohero1,      photohero2,      photohero3,        photohero4,
-                   "Image/Farm2.bmp", "Image/Cow2.bmp", "Image/Fly.bmp", "Image/Knife.bmp", "Image/Pig.bmp");
+            Level (fon,                     photohero1,             photohero2,             photohero3,               photohero4,
+                   "Image/play1/Farm2.bmp", "Image/play1/Cow2.bmp", "Image/play1/Fly2.bmp", "Image/play1/Knife2.bmp", "Image/play1/Pig2.bmp");
 
             }
 
     if (NLevel == 3)
             {
 
-            Level (fon,             photohero1,      photohero2,          photohero3,         photohero4,
-                   "Image/Arm2.bmp", "Image/MSI.bmp", "Image/MacBook.bmp", "Image/Lenovo.bmp", "Image/Asus.bmp");
+            Level (fon,                    photohero1,             photohero2,                 photohero3,                photohero4,
+                   "Image/play1/Arm2.bmp", "Image/play1/MSI2.bmp", "Image/play1/MacBook2.bmp", "Image/play1/Lenovo2.bmp", "Image/play1/Asus2.bmp");
 
             }
 
@@ -320,8 +205,9 @@ void LoadLevel (int NLevel, HDC *fon, HDC *photohero1, HDC *photohero2, HDC *pho
 
              указатель                       &Y                        Y
 
-*/
 
+сделать таблицу
+*/
 
 
 
