@@ -1,29 +1,27 @@
 //библиотека
 #include "Books/TXlib.h"
 
-
 struct Hero
     {
     int x,  y;
     int vx, vy;
 
     HDC photo;
+    void DeleteDC ();
 
     int UP, DOWN, LEFT, RIGHT, STOP;
 
     void Phisica  ();
     void KeyState ();
-    void DrawHero ();
-    void DeletDC  ();
+    void DrawHero (int t);
+
+    void Run  (int t);
     };
+
 //------------------------------------------------------
 
 int pakman ();
-void DeletDC (HDC photo);
-void Downloud (HDC* Fon, HDC* RIP);
 
-const HDC fon    = NULL;
-const HDC player = NULL;
 //------------------------------------------------------
 
 int main ()
@@ -33,36 +31,47 @@ int main ()
     pakman ();
     }
 
+//------------------------------------------------------
 
 int pakman ()
     {
-    Hero Pacman {300, 50, 50, 25, player, 'W', 'S', 'A', 'D', 'Q'};
+    HDC fon     = txLoadImage ("Image/play2/Fon.bmp");
+    HDC player  = txLoadImage ("Image/play2/Pacman.bmp");
 
-    txClear ();
-    txTransparentBlt (txDC(), 0, 0, 1000, 1000, fon, 0, 0, TX_WHITE);
+    Hero Pacman {300, 50, 0, 0, player, 'W', 'S', 'A', 'D', 'Q'};
 
-    Downloud (&fon , &player);
+    int t = 0;
 
     while (!GetAsyncKeyState (VK_ESCAPE))
         {
+        txClear ();
 
-        Pacman.DrawHero ();
-        Pacman.Phisica  ();
-        Pacman.KeyState ();
+        txTransparentBlt (txDC(), 0, 0, 1000, 1000, fon, 0, 0, TX_WHITE);
 
+        Pacman.Run (t);
+
+        t++;
         txSleep (10);
         }
 
-    DeletDC   (player);
-    //txDeletDC (fon);
+    Pacman.DeleteDC ();
+
+    txDeleteDC      (fon);
+
+
+    return 0;
     }
 
+//------------------------------------------------------
 
 void Hero::Phisica ()
     {
+    int xOld = x;
+    int yOld = y;
+
     x = x + vx;
     y = y + vy;
-
+/*
     if (x < 15)
         {
         vx = -vx;
@@ -82,7 +91,15 @@ void Hero::Phisica ()
         {
         vy = -vy;
         }
+*/
 
+    COLORREF pixel = txGetPixel (x, y);
+
+    if (pixel != TX_BLACK)
+        {
+        x = xOld;
+        y = yOld;
+        }
     }
 
 void Hero::KeyState ()
@@ -94,22 +111,26 @@ void Hero::KeyState ()
     if (GetAsyncKeyState (STOP))  vx = vy = 0;
     }
 
-void Hero::DrawHero ()
+void Hero::DrawHero (int t)
     {
     int xsize = txGetExtentX (photo);
     int ysize = txGetExtentY (photo);
 
-    txTransparentBlt (txDC(), x, y, xsize, ysize, photo, 0, 0, TX_WHITE);
+    txTransparentBlt (txDC(), x - xsize/2, y - ysize/2, xsize*t%, ysize, photo, 0, 0, TX_WHITE);
     }
 
-void Hero::DeletDC ()
+void Hero::DeleteDC ()
     {
     txDeleteDC (photo);
     }
 
-void Downloud (HDC* Fon, HDC* RIP)
+void Hero::Run (int t)
     {
-    *Fon  = txLoadImage ("Image/play2/Fon.bmp");
-    *RIP  = txLoadImage ("Image/play2/Pacman.bmp");
+    KeyState ();
+    Phisica  ();
+    DrawHero (t);
     }
+
+//------------------------------------------------------
+
 

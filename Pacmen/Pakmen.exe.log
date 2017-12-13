@@ -48,3 +48,273 @@ Run file:	C:\Users\admen\Desktop\work\Pakmen.exe
 Directory:	C:\Users\admen\Desktop\work
 
 --------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\admen\Desktop\work\Pacmen\Pakmen.exe,
+
+ВНЕЗАПНО: Целочисленное деление на ноль.
+
+#1: Исключение EXCEPTION_INT_DIVIDE_BY_ZERO (0xC0000094) при выполнении кода по адресу 0x004268BF. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2BC (32-bit), Flags: CMdRe0, Thread: 0xBC (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 6 0x76FE4A47 in C:\Windows\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+# 7 0x76FE4A17 in C:\Windows\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in void Hero::DrawHero(int) at C:\Users\admen\Desktop\work\Pacmen\Pakmen.cpp (119):
+
+    117:     int ysize = txGetExtentY (photo);
+    118: 
+=>  119:     txTransparentBlt (txDC(), x - xsize/2, y - ysize/2, xsize, ysize, photo, xsize*2%t, 0, TX_WHITE);
+    120:     }
+    121: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\admen\Desktop\work\Pacmen\Books/TXlib.h
+Compiled:	Dec 13 2017 20:12:50, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Dec 13 2017 20:12:52
+
+Run file:	C:\Users\admen\Desktop\work\Pacmen\Pakmen.exe
+Directory:	C:\Users\admen\Desktop\work\Pacmen
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует:
+
+Программа: C:\Users\admen\Desktop\work\Pacmen\Pakmen.exe,
+
+ВНЕЗАПНО: Целочисленное деление на ноль.
+
+#1: Исключение EXCEPTION_INT_DIVIDE_BY_ZERO (0xC0000094) при выполнении кода по адресу 0x004268BF. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции _set_se_translator() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2BC (32-bit), Flags: CMdRe0, Thread: 0xBC (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 6 0x76FE4A47 in C:\Windows\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+# 7 0x76FE4A17 in C:\Windows\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in void Hero::DrawHero(int) at C:\Users\admen\Desktop\work\Pacmen\Pakmen.cpp (119):
+
+    117:     int ysize = txGetExtentY (photo);
+    118: 
+=>  119:     txTransparentBlt (txDC(), x - xsize/2, y - ysize/2, xsize, ysize, photo, xsize*2%t, 0, TX_WHITE);
+    120:     }
+    121: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\admen\Desktop\work\Pacmen\Books/TXlib.h
+Compiled:	Dec 13 2017 20:12:50, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Dec 13 2017 20:12:52
+
+Run file:	C:\Users\admen\Desktop\work\Pacmen\Pakmen.exe
+Directory:	C:\Users\admen\Desktop\work\Pacmen
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\admen\Desktop\work\Pacmen\Pakmen.exe,
+
+ВНЕЗАПНО: Целочисленное деление на ноль.
+
+#1: Исключение EXCEPTION_INT_DIVIDE_BY_ZERO (0xC0000094) при выполнении кода по адресу 0x004268BF. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2BC (32-bit), Flags: CMdRe0, Thread: 0x1650 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 6 0x76FE4A47 in C:\Windows\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+# 7 0x76FE4A17 in C:\Windows\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in void Hero::DrawHero(int) at C:\Users\admen\Desktop\work\Pacmen\Pakmen.cpp (119):
+
+    117:     int ysize = txGetExtentY (photo);
+    118: 
+=>  119:     txTransparentBlt (txDC(), x - xsize/2, y - ysize/2, xsize, ysize, photo, xsize*2%t, 0, TX_WHITE);
+    120:     }
+    121: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\admen\Desktop\work\Pacmen\Books/TXlib.h
+Compiled:	Dec 13 2017 20:13:28, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Dec 13 2017 20:13:30
+
+Run file:	C:\Users\admen\Desktop\work\Pacmen\Pakmen.exe
+Directory:	C:\Users\admen\Desktop\work\Pacmen
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует:
+
+Программа: C:\Users\admen\Desktop\work\Pacmen\Pakmen.exe,
+
+ВНЕЗАПНО: Целочисленное деление на ноль.
+
+#1: Исключение EXCEPTION_INT_DIVIDE_BY_ZERO (0xC0000094) при выполнении кода по адресу 0x004268BF. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции _set_se_translator() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2BC (32-bit), Flags: CMdRe0, Thread: 0x1650 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 6 0x76FE4A47 in C:\Windows\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+# 7 0x76FE4A17 in C:\Windows\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in void Hero::DrawHero(int) at C:\Users\admen\Desktop\work\Pacmen\Pakmen.cpp (119):
+
+    117:     int ysize = txGetExtentY (photo);
+    118: 
+=>  119:     txTransparentBlt (txDC(), x - xsize/2, y - ysize/2, xsize, ysize, photo, xsize*2%t, 0, TX_WHITE);
+    120:     }
+    121: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\admen\Desktop\work\Pacmen\Books/TXlib.h
+Compiled:	Dec 13 2017 20:13:28, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Dec 13 2017 20:13:30
+
+Run file:	C:\Users\admen\Desktop\work\Pacmen\Pakmen.exe
+Directory:	C:\Users\admen\Desktop\work\Pacmen
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\admen\Desktop\work\Pacmen\Pakmen.exe,
+
+ВНЕЗАПНО: Целочисленное деление на ноль.
+
+#1: Исключение EXCEPTION_INT_DIVIDE_BY_ZERO (0xC0000094) при выполнении кода по адресу 0x004268BF. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2BC (32-bit), Flags: CMdRe0, Thread: 0x3A0C (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 6 0x76FE4A47 in C:\Windows\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+# 7 0x76FE4A17 in C:\Windows\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in void Hero::DrawHero(int) at C:\Users\admen\Desktop\work\Pacmen\Pakmen.cpp (119):
+
+    117:     int ysize = txGetExtentY (photo);
+    118: 
+=>  119:     txTransparentBlt (txDC(), x - xsize/2, y - ysize/2, xsize, ysize, photo, xsize*2%t/2, 0, TX_WHITE);
+    120:     }
+    121: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\admen\Desktop\work\Pacmen\Books/TXlib.h
+Compiled:	Dec 13 2017 20:14:01, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Dec 13 2017 20:14:03
+
+Run file:	C:\Users\admen\Desktop\work\Pacmen\Pakmen.exe
+Directory:	C:\Users\admen\Desktop\work\Pacmen
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует:
+
+Программа: C:\Users\admen\Desktop\work\Pacmen\Pakmen.exe,
+
+ВНЕЗАПНО: Целочисленное деление на ноль.
+
+#1: Исключение EXCEPTION_INT_DIVIDE_BY_ZERO (0xC0000094) при выполнении кода по адресу 0x004268BF. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции _set_se_translator() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2BC (32-bit), Flags: CMdRe0, Thread: 0x3A0C (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 6 0x76FE4A47 in C:\Windows\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+# 7 0x76FE4A17 in C:\Windows\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in void Hero::DrawHero(int) at C:\Users\admen\Desktop\work\Pacmen\Pakmen.cpp (119):
+
+    117:     int ysize = txGetExtentY (photo);
+    118: 
+=>  119:     txTransparentBlt (txDC(), x - xsize/2, y - ysize/2, xsize, ysize, photo, xsize*2%t/2, 0, TX_WHITE);
+    120:     }
+    121: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\admen\Desktop\work\Pacmen\Books/TXlib.h
+Compiled:	Dec 13 2017 20:14:01, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Dec 13 2017 20:14:03
+
+Run file:	C:\Users\admen\Desktop\work\Pacmen\Pakmen.exe
+Directory:	C:\Users\admen\Desktop\work\Pacmen
+
+--------------------------------------------------

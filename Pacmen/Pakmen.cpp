@@ -13,9 +13,9 @@ struct Hero
 
     void Phisica  ();
     void KeyState ();
-    void DrawHero ();
+    void DrawHero (int t);
 
-    void heroall  ();
+    void Run  (int t);
     };
 
 //------------------------------------------------------
@@ -38,7 +38,9 @@ int pakman ()
     HDC fon     = txLoadImage ("Image/play2/Fon.bmp");
     HDC player  = txLoadImage ("Image/play2/Pacman.bmp");
 
-    Hero Pacman {300, 50, 50, 25, player, 'W', 'S', 'A', 'D', 'Q'};
+    Hero Pacman {300, 50, 0, 0, player, 'W', 'S', 'A', 'D', 'Q'};
+
+    int t = 0;
 
     while (!GetAsyncKeyState (VK_ESCAPE))
         {
@@ -46,14 +48,16 @@ int pakman ()
 
         txTransparentBlt (txDC(), 0, 0, 1000, 1000, fon, 0, 0, TX_WHITE);
 
-        Pacman.heroall ();
+        Pacman.Run (t);
 
-        txSleep (10);
+        t++;
+        txSleep (100);
         }
 
     Pacman.DeleteDC ();
 
     txDeleteDC      (fon);
+
 
     return 0;
     }
@@ -62,9 +66,12 @@ int pakman ()
 
 void Hero::Phisica ()
     {
+    int xOld = x;
+    int yOld = y;
+
     x = x + vx;
     y = y + vy;
-
+/*
     if (x < 15)
         {
         vx = -vx;
@@ -84,7 +91,15 @@ void Hero::Phisica ()
         {
         vy = -vy;
         }
+*/
 
+    COLORREF pixel = txGetPixel (x, y);
+
+    if (pixel != TX_BLACK)
+        {
+        x = xOld;
+        y = yOld;
+        }
     }
 
 void Hero::KeyState ()
@@ -96,12 +111,12 @@ void Hero::KeyState ()
     if (GetAsyncKeyState (STOP))  vx = vy = 0;
     }
 
-void Hero::DrawHero ()
+void Hero::DrawHero (int t)
     {
     int xsize = txGetExtentX (photo);
     int ysize = txGetExtentY (photo);
 
-    txTransparentBlt (txDC(), x, y, xsize, ysize, photo, 0, 0, TX_WHITE);
+    txTransparentBlt (txDC(), x - xsize/2, y - ysize/2, xsize/2, ysize, photo, t%2*xsize/2, 0, TX_WHITE);
     }
 
 void Hero::DeleteDC ()
@@ -109,11 +124,11 @@ void Hero::DeleteDC ()
     txDeleteDC (photo);
     }
 
-void Hero::heroall ()
+void Hero::Run (int t)
     {
-    Phisica  ();
     KeyState ();
-    DrawHero ();
+    Phisica  ();
+    DrawHero (t);
     }
 
 //------------------------------------------------------
