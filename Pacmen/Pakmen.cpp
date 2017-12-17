@@ -103,8 +103,8 @@ void Hero::DrawHero (int t)
     int ysize = txGetExtentY (photo);
     int v = 0;
 
-    //if (v > 0) v = 1;
-    //else       v = 0;
+    if (v > 0) v = 1;
+    else       v = 0;
 
 
     txTransparentBlt (txDC(), x - xsize/2, y - ysize/2, xsize/2, ysize, photo, t%2*xsize/2, v%2*ysize/2, TX_WHITE);
