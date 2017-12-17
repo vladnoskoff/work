@@ -12,6 +12,7 @@ struct Hero
     int UP, DOWN, LEFT, RIGHT, STOP;
 
     void Phisica  ();
+    void Logic    ();
     void KeyState ();
     void DrawHero (int t);
 
@@ -42,21 +43,24 @@ int pakman ()
 
     int t = 0;
 
+    Pacman.Logic ();
+
     while (!GetAsyncKeyState (VK_ESCAPE))
         {
-        txClear ();
+        txClear          ();
 
         txTransparentBlt (txDC(), 0, 0, 1000, 1000, fon, 0, 0, TX_WHITE);
 
-        Pacman.Run (t);
+
+        Pacman.Run       (t);
 
         t++;
-        txSleep (10);
+        txSleep (100);
         }
 
-    Pacman.DeleteDC ();
+    Pacman.DeleteDC      ();
 
-    txDeleteDC      (fon);
+    txDeleteDC           (fon);
 
 
     return 0;
@@ -71,27 +75,6 @@ void Hero::Phisica ()
 
     x = x + vx;
     y = y + vy;
-/*
-    if (x < 15)
-        {
-        vx = -vx;
-        }
-
-    if (y < 15)
-        {
-        vy = -vy;
-        }
-
-    if (x > 975)
-        {
-        vx = -vx;
-        }
-
-    if (y > 975)
-        {
-        vy = -vy;
-        }
-*/
 
     COLORREF pixel = txGetPixel (x, y);
 
@@ -99,7 +82,10 @@ void Hero::Phisica ()
         {
         x = xOld;
         y = yOld;
+
+        Logic ();
         }
+
     }
 
 void Hero::KeyState ()
@@ -115,8 +101,13 @@ void Hero::DrawHero (int t)
     {
     int xsize = txGetExtentX (photo);
     int ysize = txGetExtentY (photo);
+    int v = 0;
 
-    txTransparentBlt (txDC(), x - xsize/2, y - ysize/2, xsize*t%, ysize, photo, 0, 0, TX_WHITE);
+    if (v > 0) v = 1;
+    else       v = 0;
+
+
+    txTransparentBlt (txDC(), x - xsize/2, y - ysize/2, xsize/2, ysize, photo, t%2*xsize/2, v%2*ysize/2, TX_WHITE);
     }
 
 void Hero::DeleteDC ()
@@ -129,6 +120,30 @@ void Hero::Run (int t)
     KeyState ();
     Phisica  ();
     DrawHero (t);
+    }
+
+void Hero::Logic ()
+    {
+
+    if (rand () % 2 == 0)
+        {
+
+        if (rand () % 2 == 0) vx = +10;
+        else                  vx = -10;
+
+        vy = 0;
+
+        }
+    else
+        {
+
+        if (rand () % 2 == 0) vy = +10;
+        else                  vy = -10;
+
+        vx = 0;
+
+        }
+
     }
 
 //------------------------------------------------------
