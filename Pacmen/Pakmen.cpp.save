@@ -38,8 +38,10 @@ int pakman ()
     {
     HDC fon     = txLoadImage ("Image/play2/Fon.bmp");
     HDC player  = txLoadImage ("Image/play2/Pacman.bmp");
+    HDC boy     = txLoadImage ("Image/play2/boy.bmp");
 
-    Hero Pacman {300, 50, 0, 0, player, 'W', 'S', 'A', 'D', 'Q'};
+    Hero Pacman {300, 50,  0, 0, player};
+    Hero Red    {500, 500, 1, 1, boy,  'W', 'S', 'A', 'D', 'Q'}
 
     int t = 0;
 
@@ -54,11 +56,14 @@ int pakman ()
 
         Pacman.Run       (t);
 
+        Red.Run          (t);
+
         t++;
         txSleep (100);
         }
 
     Pacman.DeleteDC      ();
+    Red.DeleteDC         ();
 
     txDeleteDC           (fon);
 
@@ -101,13 +106,37 @@ void Hero::DrawHero (int t)
     {
     int xsize = txGetExtentX (photo);
     int ysize = txGetExtentY (photo);
-    int v = 0;
+    int v     = 0;
 
-    if (v > 0) v = 1;
-    else       v = 0;
+    if (vx > 0 && vy == 0) v = 0;
+
+    if (vx < 0 && vy == 0) v = 1;
+
+    if (vy > 0 && vx == 0) v = 2;
+
+    if (vy < 0 && vx == 0) v = 3;
+
+/*
+1
+vx > 0, vy = 0
 
 
-    txTransparentBlt (txDC(), x - xsize/2, y - ysize/2, xsize/2, ysize, photo, t%2*xsize/2, v%2*ysize/2, TX_WHITE);
+2
+vx< 0 , vy = 0
+
+3
+vx = 0, vy < 0
+
+4
+vx = 0, vy > 0
+
+0 > -vy , чтобы фото смотрела вверх
+0 > vx чтобы смотрел вниз
+
+*/
+
+
+    txTransparentBlt (txDC(), x - xsize/2, y - ysize/2, xsize/2, ysize/4, photo, t%2*xsize/2, v*ysize/4, TX_WHITE);
     }
 
 void Hero::DeleteDC ()
