@@ -318,3 +318,217 @@ Run file:	C:\Users\admen\Desktop\work\Pacmen\Pakmen.exe
 Directory:	C:\Users\admen\Desktop\work\Pacmen
 
 --------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\admen\Desktop\work\Pacmen\Pakmen.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x73E0A7E1 в функции ungetwc(). Попытка прочесть данные по адресу 0x00000051. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FF2BC (32-bit), Flags: CMdRe0, Thread: 0x4E64 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x73E0A7E1 in C:\Windows\System32\msvcrt.dll: ungetwc()
+# 1 0x73E05C0D in C:\Windows\System32\msvcrt.dll: vsnprintf_l()
+# 2 0x73E05B68 in C:\Windows\System32\msvcrt.dll: vsnprintf()
+#10 0x773B4A77 in C:\Windows\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+#11 0x773B4A47 in C:\Windows\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txNotifyIcon(unsigned int, const char*, const char*, ...) at C:\Users\admen\Desktop\work\Pacmen\Books/TXlib.h (10008):
+
+  10006: $   strncpy_s       (nid.szTip,       sizeof (nid.szTip),       "TXLib Information", sizeof (nid.szTip));
+  10007: $   strncpy_s       (nid.szInfoTitle, sizeof (nid.szInfoTitle), (title? title : "TXLib сообщает"), sizeof (nid.szInfoTitle) - 1);
+=>10008: $   _tx_vsnprintf_s (nid.szInfo, sizeof (nid.szInfo), format, arg);
+  10009: $   nid.dwInfoFlags = flags;
+  10010: 
+
+# 1 in void SelectLevel(int) at C:\Users\admen\Desktop\work\Pacmen\Pakmen.cpp (419):
+
+    417: 
+    418: 
+=>  419:     txNotifyIcon (NIIF_INFO, "Уважаемые пассажиры", "Поезд на %s отправляется в %d:%d.", 'Q', 'W', 'E');
+    420: 
+    421:     }
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\admen\Desktop\work\Pacmen\Books/TXlib.h
+Compiled:	Mar  3 2018 11:12:56, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Mar 03 2018 11:13:00
+
+Run file:	C:\Users\admen\Desktop\work\Pacmen\Pakmen.exe
+Directory:	C:\Users\admen\Desktop\work\Pacmen
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует:
+
+Программа: C:\Users\admen\Desktop\work\Pacmen\Pakmen.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x73E0A7E1 в функции ungetwc(). Попытка прочесть данные по адресу 0x00000051. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FF2BC (32-bit), Flags: CMdRe0, Thread: 0x4E64 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x73E0A7E1 in C:\Windows\System32\msvcrt.dll: ungetwc()
+# 1 0x73E05C0D in C:\Windows\System32\msvcrt.dll: vsnprintf_l()
+# 2 0x73E05B68 in C:\Windows\System32\msvcrt.dll: vsnprintf()
+#10 0x773B4A77 in C:\Windows\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+#11 0x773B4A47 in C:\Windows\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txNotifyIcon(unsigned int, const char*, const char*, ...) at C:\Users\admen\Desktop\work\Pacmen\Books/TXlib.h (10008):
+
+  10006: $   strncpy_s       (nid.szTip,       sizeof (nid.szTip),       "TXLib Information", sizeof (nid.szTip));
+  10007: $   strncpy_s       (nid.szInfoTitle, sizeof (nid.szInfoTitle), (title? title : "TXLib сообщает"), sizeof (nid.szInfoTitle) - 1);
+=>10008: $   _tx_vsnprintf_s (nid.szInfo, sizeof (nid.szInfo), format, arg);
+  10009: $   nid.dwInfoFlags = flags;
+  10010: 
+
+# 1 in void SelectLevel(int) at C:\Users\admen\Desktop\work\Pacmen\Pakmen.cpp (419):
+
+    417: 
+    418: 
+=>  419:     txNotifyIcon (NIIF_INFO, "Уважаемые пассажиры", "Поезд на %s отправляется в %d:%d.", 'Q', 'W', 'E');
+    420: 
+    421:     }
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\admen\Desktop\work\Pacmen\Books/TXlib.h
+Compiled:	Mar  3 2018 11:12:56, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Mar 03 2018 11:13:00
+
+Run file:	C:\Users\admen\Desktop\work\Pacmen\Pakmen.exe
+Directory:	C:\Users\admen\Desktop\work\Pacmen
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\admen\Desktop\work\Pacmen\Pakmen.exe, файл: C:\Users\admen\Desktop\work\Pacmen\Books/TXlib.h, строка: 10882, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FF2BC (32-bit), Flags: CMdRe0, Thread: 0x3F5C (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 5 0x77804A77 in C:\Windows\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+# 6 0x77804A47 in C:\Windows\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at C:\Users\admen\Desktop\work\Pacmen\Books/TXlib.h (10882):
+
+  10880:     {
+  10881: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>10882: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  10883: 
+  10884: $   if (width <= 0 || height <= 0)
+
+# 1 in int pakman() at C:\Users\admen\Desktop\work\Pacmen\Pakmen.cpp (124):
+
+    122: 
+    123: 
+=>  124:         txTransparentBlt      (txDC(), 0, 0, 1700, 1000, fon, 0, 0, TX_WHITE);
+    125: 
+    126:         Pacman.Phisica        ();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\admen\Desktop\work\Pacmen\Books/TXlib.h
+Compiled:	Mar  3 2018 15:17:25, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Mar 03 2018 15:17:28
+
+Run file:	C:\Users\admen\Desktop\work\Pacmen\Pakmen.exe
+Directory:	C:\Users\admen\Desktop\work\Pacmen
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\admen\Desktop\work\Pacmen\Pakmen.exe, файл: C:\Users\admen\Desktop\work\Pacmen\Books/TXlib.h, строка: 10882, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FF2BC (32-bit), Flags: CMdRe0, Thread: 0x3D60 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 5 0x77804A77 in C:\Windows\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+# 6 0x77804A47 in C:\Windows\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at C:\Users\admen\Desktop\work\Pacmen\Books/TXlib.h (10882):
+
+  10880:     {
+  10881: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>10882: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  10883: 
+  10884: $   if (width <= 0 || height <= 0)
+
+# 1 in int pakman() at C:\Users\admen\Desktop\work\Pacmen\Pakmen.cpp (124):
+
+    122: 
+    123: 
+=>  124:         txTransparentBlt      (txDC(), 0, 0, 1700, 1000, fon, 0, 0, TX_WHITE);
+    125: 
+    126:         Pacman.Phisica        ();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\admen\Desktop\work\Pacmen\Books/TXlib.h
+Compiled:	Mar  3 2018 15:18:50, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Mar 03 2018 15:18:53
+
+Run file:	C:\Users\admen\Desktop\work\Pacmen\Pakmen.exe
+Directory:	C:\Users\admen\Desktop\work\Pacmen
+
+--------------------------------------------------
