@@ -57,12 +57,11 @@ int main ()
 int pakman ()
     {
     HDC fon     = txLoadImage ("Image/play2/Fon.bmp");
-    HDC fon2    = txLoadImage ("Image/play2/fon2.bmp");
+    HDC fon2     = txLoadImage ("Image/play2/fon2.bmp");
     HDC player  = txLoadImage ("Image/play2/Pacman.bmp");
     HDC boy     = txLoadImage ("Image/play2/boy.bmp");
     HDC boy2    = txLoadImage ("Image/play2/boy2.bmp");
     HDC eat     = txLoadImage ("Image/play2/eat.bmp");
-    
 
     Hero Pacman  {306, 200, 1, 1, player, 2, 4, Life, Life};
     Hero Red     {812, 550, 1, 1, boy,    2, 4, Life, Life, 'W',   'S',     'A',     'D',     'Q'};
@@ -152,8 +151,8 @@ return 30;
         DrawScore             (score);
         DrawLife              (life);
 
-        if (score == 2)       break;
-        if (life  == 0)       break;
+        //if (score == 2)       break;
+        //if (life  == 0)       break;
 
         /*
         // oldstatus    = 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0
@@ -173,14 +172,26 @@ return 30;
         if (time >= PacmanTime*1000) break;
 
         printf                ("%d \n", time);
-        
-        
+
+
         if (Yellow.status == Rip && Red.status == Rip)
             {
-            txDeletDC (fon);
-            
-            
-            
+            int Answer = txMessageBox ("Level 2 ?!?!?","бнопня???", MB_YESNO);
+            if (Answer == IDYES)
+                {
+                //txDeleteDC            (fon);
+                txTransparentBlt      (txDC(), 0, 0, 1700, 1070, fon2, 0, 0, TX_WHITE);
+
+                Red.status            = Life;
+                Yellow.status         = Life;
+
+                int score = Touching  (&Pacman, &Red, &Yellow, &life);
+
+                }
+            else
+                {
+                break;
+                }
             }
 
         t++;
@@ -191,6 +202,7 @@ return 30;
     Red.DeleteDC              ();
     Yellow.DeleteDC           ();
     Eat.DeleteDC              ();
+
 
 
 
@@ -468,8 +480,6 @@ int TimeLevel ()
 
     return select;
     }
-
-
 
 
 //------------------------------------------------------

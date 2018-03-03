@@ -57,6 +57,7 @@ int main ()
 int pakman ()
     {
     HDC fon     = txLoadImage ("Image/play2/Fon.bmp");
+    HDC fon2     = txLoadImage ("Image/play2/fon2.bmp");
     HDC player  = txLoadImage ("Image/play2/Pacman.bmp");
     HDC boy     = txLoadImage ("Image/play2/boy.bmp");
     HDC boy2    = txLoadImage ("Image/play2/boy2.bmp");
@@ -150,8 +151,8 @@ return 30;
         DrawScore             (score);
         DrawLife              (life);
 
-        if (score == 2)       break;
-        if (life  == 0)       break;
+        //if (score == 2)       break;
+        //if (life  == 0)       break;
 
         /*
         // oldstatus    = 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0
@@ -173,7 +174,25 @@ return 30;
         printf                ("%d \n", time);
 
 
-       // if (Yellow.status    == Life   &&   Red.status     == Rip)
+        if (Yellow.status == Rip && Red.status == Rip)
+            {
+            int Answer = txMessageBox ("Level 2 ?!?!?","бнопня???", MB_YESNO);
+            if (Answer == IDYES)
+                {
+                //txDeleteDC            (fon);
+                txTransparentBlt      (txDC(), 0, 0, 1700, 1070, fon2, 0, 0, TX_WHITE);
+
+                Red.status            = Life;
+                Yellow.status         = Life;
+
+                score = Touching  (&Pacman, &Red, &Yellow, &life);
+
+                }
+            else
+                {
+                break;
+                }
+            }
 
         t++;
         txSleep               (100);
@@ -184,7 +203,7 @@ return 30;
     Yellow.DeleteDC           ();
     Eat.DeleteDC              ();
 
-    txDeleteDC           (fon);
+
 
 
     return 0;
@@ -461,8 +480,6 @@ int TimeLevel ()
 
     return select;
     }
-
-
 
 
 //------------------------------------------------------

@@ -532,3 +532,103 @@ Run file:	C:\Users\admen\Desktop\work\Pacmen\Pakmen.exe
 Directory:	C:\Users\admen\Desktop\work\Pacmen
 
 --------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\admen\Desktop\work\Pacmen\Pakmen.exe, файл: C:\Users\admen\Desktop\work\Pacmen\Books/TXlib.h, строка: 10882, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FF2BC (32-bit), Flags: CMdRe0, Thread: 0x3E68 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 5 0x77804A77 in C:\Windows\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+# 6 0x77804A47 in C:\Windows\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at C:\Users\admen\Desktop\work\Pacmen\Books/TXlib.h (10882):
+
+  10880:     {
+  10881: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>10882: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  10883: 
+  10884: $   if (width <= 0 || height <= 0)
+
+# 1 in int pakman() at C:\Users\admen\Desktop\work\Pacmen\Pakmen.cpp (123):
+
+    121: 
+    122: 
+=>  123:         txTransparentBlt      (txDC(), 0, 0, 1700, 1000, fon, 0, 0, TX_WHITE);
+    124: 
+    125:         Pacman.Phisica        ();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\admen\Desktop\work\Pacmen\Books/TXlib.h
+Compiled:	Mar  3 2018 15:35:40, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Mar 03 2018 15:35:42
+
+Run file:	C:\Users\admen\Desktop\work\Pacmen\Pakmen.exe
+Directory:	C:\Users\admen\Desktop\work\Pacmen
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\admen\Desktop\work\Pacmen\Pakmen.exe, файл: C:\Users\admen\Desktop\work\Pacmen\Books/TXlib.h, строка: 10882, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FF2BC (32-bit), Flags: CMdRe0, Thread: 0x1DA0 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 5 0x77804A77 in C:\Windows\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+# 6 0x77804A47 in C:\Windows\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at C:\Users\admen\Desktop\work\Pacmen\Books/TXlib.h (10882):
+
+  10880:     {
+  10881: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>10882: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  10883: 
+  10884: $   if (width <= 0 || height <= 0)
+
+# 1 in int pakman() at C:\Users\admen\Desktop\work\Pacmen\Pakmen.cpp (123):
+
+    121: 
+    122: 
+=>  123:         txTransparentBlt      (txDC(), 0, 0, 1700, 1000, fon, 0, 0, TX_WHITE);
+    124: 
+    125:         Pacman.Phisica        ();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\admen\Desktop\work\Pacmen\Books/TXlib.h
+Compiled:	Mar  3 2018 15:36:14, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Mar 03 2018 15:36:17
+
+Run file:	C:\Users\admen\Desktop\work\Pacmen\Pakmen.exe
+Directory:	C:\Users\admen\Desktop\work\Pacmen
+
+--------------------------------------------------
