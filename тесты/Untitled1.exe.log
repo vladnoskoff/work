@@ -1,0 +1,150 @@
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\admen\Desktop\work\тесты\Untitled1.exe, файл: C:\Users\admen\Desktop\work\тесты\Books/TXlib.h, строка: 10323, функция: POINT {anonymous}::TX::txGetExtent(HDC),
+
+Сообщение: Параметр "dc" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2BC (32-bit), Flags: CMdRe0, Thread: 0x6EC (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 6 0x77804A77 in C:\Windows\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+# 7 0x77804A47 in C:\Windows\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in POINT {anonymous}::TX::txGetExtent(HDC) at C:\Users\admen\Desktop\work\тесты\Books/TXlib.h (10323):
+
+  10321: $1  POINT err = {-1, -1};
+  10322: 
+=>10323: $   if (_TX_DEFAULT_HDC_FAILED (dc)) return err;
+  10324: 
+  10325: $   BITMAP bmap = {0};
+
+# 1 in int main() at C:\Users\admen\Desktop\work\тесты\Untitled1.cpp (28):
+
+     26:     txCreateWindow (1000, 1000);
+     27: 
+=>   28:     HDC player  = txLoadImage ("Image/play2/Pacman.bmp");
+     29: 
+     30:     //HDC Fon = txLoadImage ("Image/fon3.bmp");
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\admen\Desktop\work\тесты\Books/TXlib.h
+Compiled:	Mar 10 2018 12:12:43, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Mar 10 2018 12:12:49
+
+Run file:	C:\Users\admen\Desktop\work\тесты\Untitled1.exe
+Directory:	C:\Users\admen\Desktop\work\тесты
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\admen\Desktop\work\тесты\Untitled1.exe, файл: C:\Users\admen\Desktop\work\тесты\Books/TXlib.h, строка: 10323, функция: POINT {anonymous}::TX::txGetExtent(HDC),
+
+Сообщение: Параметр "dc" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2BC (32-bit), Flags: CMdRe0, Thread: 0x1350 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 6 0x77804A77 in C:\Windows\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+# 7 0x77804A47 in C:\Windows\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in POINT {anonymous}::TX::txGetExtent(HDC) at C:\Users\admen\Desktop\work\тесты\Books/TXlib.h (10323):
+
+  10321: $1  POINT err = {-1, -1};
+  10322: 
+=>10323: $   if (_TX_DEFAULT_HDC_FAILED (dc)) return err;
+  10324: 
+  10325: $   BITMAP bmap = {0};
+
+# 1 in int main() at C:\Users\admen\Desktop\work\тесты\Untitled1.cpp (28):
+
+     26:     txCreateWindow (1000, 1000);
+     27: 
+=>   28:     HDC player  = txLoadImage ("Image/play2/Pacman.bmp");
+     29: 
+     30:     //HDC Fon = txLoadImage ("Image/fon3.bmp");
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\admen\Desktop\work\тесты\Books/TXlib.h
+Compiled:	Mar 10 2018 12:13:34, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Mar 10 2018 12:13:39
+
+Run file:	C:\Users\admen\Desktop\work\тесты\Untitled1.exe
+Directory:	C:\Users\admen\Desktop\work\тесты
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\admen\Desktop\work\тесты\Untitled1.exe, файл: C:\Users\admen\Desktop\work\тесты\Books/TXlib.h, строка: 10323, функция: POINT {anonymous}::TX::txGetExtent(HDC),
+
+Сообщение: Параметр "dc" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2BC (32-bit), Flags: CMdRe0, Thread: 0x690 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 6 0x77804A77 in C:\Windows\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+# 7 0x77804A47 in C:\Windows\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in POINT {anonymous}::TX::txGetExtent(HDC) at C:\Users\admen\Desktop\work\тесты\Books/TXlib.h (10323):
+
+  10321: $1  POINT err = {-1, -1};
+  10322: 
+=>10323: $   if (_TX_DEFAULT_HDC_FAILED (dc)) return err;
+  10324: 
+  10325: $   BITMAP bmap = {0};
+
+# 1 in int main() at C:\Users\admen\Desktop\work\тесты\Untitled1.cpp (28):
+
+     26:     txCreateWindow (1000, 1000);
+     27: 
+=>   28:     HDC player  = txLoadImage ("Image/play2/Pacman.bmp");
+     29: 
+     30:     //HDC Fon = txLoadImage ("Image/fon3.bmp");
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\admen\Desktop\work\тесты\Books/TXlib.h
+Compiled:	Mar 10 2018 12:14:39, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Mar 10 2018 12:14:45
+
+Run file:	C:\Users\admen\Desktop\work\тесты\Untitled1.exe
+Directory:	C:\Users\admen\Desktop\work\тесты
+
+--------------------------------------------------

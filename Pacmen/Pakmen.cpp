@@ -9,7 +9,6 @@ struct Hero
     HDC photo;
     int FrameSizeX;
     int FrameSizeY;
-    void DeleteDC ();
     int status, oldstatus;
 
     int UP, DOWN, LEFT, RIGHT, STOP;
@@ -20,6 +19,7 @@ struct Hero
     void DrawHero (int t);
     void Mouse    (int leftm, int rightm);
     void Pull     (Hero* hero2);
+    void DeleteDC ();
     };
 
 //------------------------------------------------------
@@ -29,18 +29,23 @@ int    Touching    (Hero* pacman, Hero* hero2, Hero* hero3, int *life);
 double GetDistance (Hero* hero, Hero* hero2);
 void   DrawScore   (int score);
 void   DrawLife    (int life);
-int    TimeLevel  ();
+int    TimeLevel   ();
+
+void DrawFood      (Hero Eat[], int t);
+void RandFood      (Hero Eat[], HDC eat);
 
 const int XMap       = 1700;
 const int YMap       = 1070;
 //const int PacmanTime = 0; вместо const теперь простая переменная к которой присваиваеться функция (SelectLevel)
 
-const int Level      = 0;
+//const int Level      = 0;
 
 const int Life       = 1;
 const int Rip        = 0;
 
 const int HeroPlace  = 1000;
+
+const int N = 1500;
 
 //------------------------------------------------------
 
@@ -56,29 +61,31 @@ int main ()
 
 int pakman ()
     {
-    HDC fon     = txLoadImage ("Image/play2/Fon.bmp");
-    HDC fon2     = txLoadImage ("Image/play2/fon2.bmp");
-    HDC player  = txLoadImage ("Image/play2/Pacman.bmp");
-    HDC boy     = txLoadImage ("Image/play2/boy.bmp");
-    HDC boy2    = txLoadImage ("Image/play2/boy2.bmp");
-    HDC eat     = txLoadImage ("Image/play2/eat.bmp");
+    HDC fon1      = txLoadImage ("Image/play2/fon1 copy.bmp");
+    HDC fon2      = txLoadImage ("Image/play2/fon2.bmp");
+    HDC player    = txLoadImage ("Image/play2/Pacman.bmp");
+    HDC boy       = txLoadImage ("Image/play2/boy.bmp");
+    HDC boy2      = txLoadImage ("Image/play2/boy2.bmp");
+    HDC eat       = txLoadImage ("Image/play2/eat.bmp");
 
-    Hero Pacman  {306, 200, 1, 1, player, 2, 4, Life, Life};
-    Hero Red     {812, 550, 1, 1, boy,    2, 4, Life, Life, 'W',   'S',     'A',     'D',     'Q'};
-    Hero Yellow  {606, 195, 1, 1, boy2,   2, 4, Life, Life, VK_UP, VK_DOWN, VK_LEFT, VK_RIGHT};
-    Hero Eat     {606, 200, 0, 0, eat,    1, 1, Life, Life};
+    Hero Pacman   = {306, 200, 1, 1, player, 2, 4, Life, Life};
+    Hero Red      = {812, 550, 1, 1, boy,    2, 4, Life, Life, 'W',   'S',     'A',     'D',     'Q'};
+    Hero Yellow   = {606, 195, 1, 1, boy2,   2, 4, Life, Life, VK_UP, VK_DOWN, VK_LEFT, VK_RIGHT};
+    Hero Eat [N]  = {606, 200, 0, 0, eat,    1, 1, Life, Life};
 
+    RandFood (Eat, eat);
 
+    HDC fon       = fon1;
 
-    int t = 0;
+    int t         = 0;
 
     int StartTime = GetTickCount();
 
-    Pacman.Logic               ();
+    Pacman.Logic                ();
 
-    txSelectFont               ("Unispace", 40);
+    txSelectFont                ("Unispace", 40);
 
-    int PacmanTime = TimeLevel ();
+    int PacmanTime = TimeLevel  ();
 
 /*
 Создаем переменную в функции (SelectLevel)
@@ -119,7 +126,6 @@ return 30;
         txSetFillColor        (TX_BLACK);
         txClear               ();
 
-
         txTransparentBlt      (txDC(), 0, 0, 1700, 1000, fon, 0, 0, TX_WHITE);
 
         Pacman.Phisica        ();
@@ -130,15 +136,9 @@ return 30;
         Red.Phisica           ();
         Yellow.Phisica        ();
 
-        Eat.DrawHero          (t);
-
+        DrawFood              (Eat, t);
         Red.DrawHero          (t);
-
-
-        //Yellow.KeyState       ();
-
         Yellow.DrawHero       (t);
-
         Pacman.DrawHero       (t);
 
         Pacman.Mouse          (MK_LBUTTON, 0);
@@ -151,18 +151,12 @@ return 30;
         DrawScore             (score);
         DrawLife              (life);
 
-        //if (score == 2)       break;
-        //if (life  == 0)       break;
-
-        /*
-        // oldstatus    = 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0
-        // status       = 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0
-        //                                  *                  /
-        //                                                                                /
-        //if (Red.oldstatus == Life && Red.status == Rip)    StartTime = GetTickCount();
-        //                                                                                /
-        */
-
+         //oldstatus    = 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0
+         //status       = 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0
+         //                                 *
+         //
+         //if (Red.oldstatus == Life && Red.status == Rip)    StartTime = GetTickCount();
+         //
 
         if (Red.oldstatus     == Life   &&   Red.status     == Rip)    StartTime = GetTickCount();
         if (Yellow.oldstatus  == Life   &&   Yellow.status  == Rip)    StartTime = GetTickCount();
@@ -173,25 +167,23 @@ return 30;
 
         printf                ("%d \n", time);
 
-
         if (Yellow.status == Rip && Red.status == Rip)
             {
+
             int Answer = txMessageBox ("Level 2 ?!?!?","ВОПРОС???", MB_YESNO);
             if (Answer == IDYES)
                 {
-                //txDeleteDC            (fon);
-                txTransparentBlt      (txDC(), 0, 0, 1700, 1070, fon2, 0, 0, TX_WHITE);
-
-                Red.status            = Life;
-                Yellow.status         = Life;
-
-                score = Touching  (&Pacman, &Red, &Yellow, &life);
+                fon         = fon2;
+                Pacman.x    = 606,  Pacman.y      = 100;
+                Red.status  = Life, Yellow.status = Life;
+                life        = 2;
 
                 }
             else
                 {
                 break;
                 }
+
             }
 
         t++;
@@ -201,10 +193,8 @@ return 30;
     Pacman.DeleteDC           ();
     Red.DeleteDC              ();
     Yellow.DeleteDC           ();
-    Eat.DeleteDC              ();
-
-
-
+    txDeleteDC                (fon1);
+    txDeleteDC                (fon2);
 
     return 0;
     }
@@ -481,6 +471,40 @@ int TimeLevel ()
     return select;
     }
 
+void DrawFood (Hero Eat[], int t)
+    {
+    int n = 0;
+
+    while (n < N)
+            {
+
+            Eat[n].DrawHero (t);
+            n++;
+            }
+
+    }
+
+void RandFood (Hero Eat[], HDC eat)
+    {
+    int n = 0;
+
+    while (n < N)
+        {
+
+        Eat[n].x          = rand ()%28 * 60;
+        Eat[n].y          = rand ()%18 * 60;
+        Eat[n].vx         = 0;
+        Eat[n].vy         = 0;
+        Eat[n].photo      = eat;
+        Eat[n].FrameSizeX = 1;
+        Eat[n].FrameSizeY = 1;
+        Eat[n].status     = Life;
+        Eat[n].oldstatus  = Life;
+
+        n++;
+        }
+
+    }
 
 //------------------------------------------------------
 

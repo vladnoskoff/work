@@ -1,0 +1,9 @@
+#include "Books/TXlib.h"
+
+int main ()
+    {
+    _txWindowStyle &= ~WS_CAPTION;
+    txCreateWindow (1000, 1000);
+    
+      
+    }
