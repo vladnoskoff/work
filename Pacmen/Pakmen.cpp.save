@@ -13,39 +13,37 @@ struct Hero
 
     int UP, DOWN, LEFT, RIGHT, STOP;
 
-    void Phisica  ();
-    void Logic    ();
-    void KeyState ();
-    void DrawHero (int t);
-    void Mouse    (int leftm, int rightm);
-    void Pull     (Hero* hero2);
-    void DeleteDC ();
+    void Phisica     ();
+    void Logic       ();
+    void KeyState    ();
+    void DrawHero    (int t);
+    void Mouse       (int leftm, int rightm);
+    void Pull        (Hero* hero2);
+    void DeleteDC    ();
     };
 
 //------------------------------------------------------
 
-int    pakman      ();
-int    Touching    (Hero* pacman, Hero* hero2, Hero* hero3, int *life);
-double GetDistance (Hero* hero, Hero* hero2);
-void   DrawScore   (int score);
-void   DrawLife    (int life);
-int    TimeLevel   ();
+int    pakman        ();
+int    Touching      (Hero* pacman, Hero* hero2, Hero* hero3, int *life);
+double GetDistance   (Hero* hero, Hero* hero2);
+void   DrawScore     (int score);
+void   DrawLife      (int life);
+int    TimeLevel     ();
 
-void DrawFood      (Hero Eat[], int t);
-void RandFood      (Hero Eat[]);
+void DrawFood        (Hero Eat[], int t);
+void RandFood        (Hero Eat[], HDC eat);
+void DistanceFood    (Hero Eat[], Hero hero);
 
 const int XMap       = 1700;
 const int YMap       = 1070;
 //const int PacmanTime = 0; вместо const теперь простая переменная к которой присваиваеться функция (SelectLevel)
 
-//const int Level      = 0;
-
 const int Life       = 1;
 const int Rip        = 0;
+const int N          = 1500;
 
 const int HeroPlace  = 1000;
-
-const int N = 500;
 
 //------------------------------------------------------
 
@@ -61,7 +59,7 @@ int main ()
 
 int pakman ()
     {
-    HDC fon1      = txLoadImage ("Image/play2/fon1 copy.bmp");
+    HDC fon1      = txLoadImage ("Image/play2/fon1.bmp");
     HDC fon2      = txLoadImage ("Image/play2/fon2.bmp");
     HDC player    = txLoadImage ("Image/play2/Pacman.bmp");
     HDC boy       = txLoadImage ("Image/play2/boy.bmp");
@@ -71,11 +69,14 @@ int pakman ()
     Hero Pacman   = {306, 200, 1, 1, player, 2, 4, Life, Life};
     Hero Red      = {812, 550, 1, 1, boy,    2, 4, Life, Life, 'W',   'S',     'A',     'D',     'Q'};
     Hero Yellow   = {606, 195, 1, 1, boy2,   2, 4, Life, Life, VK_UP, VK_DOWN, VK_LEFT, VK_RIGHT};
-    Hero Eat [N]  = {606, 200, 0, 0, eat,    1, 1, Life, Life};
+    Hero Eat [N]  = {};
 
-    RandFood (Eat);
 
     HDC fon       = fon1;
+
+    txTransparentBlt      (txDC(), 0, 0, 1700, 1000, fon, 0, 0, TX_WHITE);
+
+    RandFood              (Eat, eat);
 
     int t         = 0;
 
@@ -93,7 +94,7 @@ int pakman ()
 возвращаем переменную
 
 мы это разбирали
- тоже самое что и return 30 и return 10
+тоже самое что и return 30 и return 10
 
 я хочу
 return 30 :
@@ -101,12 +102,11 @@ return 30 :
 мы возвращаем число и присваиваем переменной(PacmanTime)
 потом начинаеться работа цикла
 
-
 на самом деле происходит
 вызываем функцию (SelectLevel)
 в ней
 мы возвращаем число (30 или 10)
- и все
+и все
 
 как правильно сделать вызов функции(SelectLevel)
 
@@ -114,12 +114,10 @@ return 30 :
 
 int PacmanTime = SelectLevel ();
 
-
 return 30;
-
-
 */
 
+    txBegin ();
 
     while (!GetAsyncKeyState (VK_ESCAPE))
         {
@@ -166,6 +164,10 @@ return 30;
         if (time >= PacmanTime*1000) break;
 
         printf                ("%d \n", time);
+
+        DistanceFood (Eat, Red);
+        DistanceFood (Eat, Yellow);
+        DistanceFood (Eat, Pacman);
 
         if (Yellow.status == Rip && Red.status == Rip)
             {
@@ -356,6 +358,8 @@ void Hero::Pull (Hero* hero2)
 
     }
 
+//------------------------------------------------------
+
 double GetDistance (Hero* hero, Hero* hero2)
     {
     double s = sqrt ( (hero->x - hero2->x) * (hero->x - hero2->x) + (hero->y - hero2->y) * (hero->y - hero2->y));
@@ -441,24 +445,6 @@ void DrawLife (int life)
 
     }
 
-/*
-int TimeLevel ()
-    {
-
-
-    int Answer = txMessageBox ("сложный = ДА , легкий = НЕТ","ВОПРОС???", MB_YESNO);
-    if (Answer == IDYES)
-        {
-        return 10;
-        }
-    else
-        {
-        return 30;
-        }
-
-    }
-*/
-
 int TimeLevel ()
     {
 
@@ -484,25 +470,64 @@ void DrawFood (Hero Eat[], int t)
 
     }
 
-void RandFood (Hero Eat[])
+void RandFood (Hero Eat[], HDC eat)
     {
+
     int n = 0;
 
     while (n < N)
         {
 
-        Eat[n].x = rand ()%17 * 60;
-        Eat[n].y = rand ()%17 * 60;
-        Eat[n].vx
-        Eat[n].v
-        Eat[n].
-        Eat[n].
-        Eat[n].
+        Eat[n].x            = rand ()%28 * 60;
+        Eat[n].y            = rand ()%18 * 60;
+        Eat[n].vx           = 0;
+        Eat[n].vy           = 0;
+        Eat[n].photo        = eat;
+        Eat[n].FrameSizeX   = 1;
+        Eat[n].FrameSizeY   = 1;
+        Eat[n].status       = Life;
+        Eat[n].oldstatus    = Life;
+
+
+        while (txGetPixel (Eat[n].x, Eat[n].y) != TX_BLACK)
+            {
+            Eat[n].x        = rand ()%28 * 60;
+            Eat[n].y        = rand ()%18 * 60;
+            }
+
+
+        n++;
+        }
+
+
+    }
+
+void DistanceFood (Hero Eat[], Hero hero)
+    {
+/*
+0. int N = 1500 , n = 0
+1. делаем цикл,  где будет условие (n < N)
+2. мы измеряем дистанцию между Eat[n] и героем (GetDistance) и сохраняем это в переменную (double Food)
+3. задайем условие (Food меньше или равно 100)
+4. если да , то  Eat[n].status  равно Rip
+*/
+
+    int n = 0;
+
+    while (n < N)
+        {
+        double Food = GetDistance (&Eat[n], &hero);
+
+        if (Food <= 20)
+            {
+            Eat[n].status = Rip;
+            }
 
         n++;
         }
 
     }
+
 
 //------------------------------------------------------
 

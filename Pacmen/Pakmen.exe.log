@@ -732,3 +732,203 @@ Run file:	C:\Users\admen\Desktop\work\Pacmen\Pakmen.exe
 Directory:	C:\Users\admen\Desktop\work\Pacmen
 
 --------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\admen\Desktop\work\Pacmen\Pakmen.exe, файл: C:\Users\admen\Desktop\work\Pacmen\Books/TXlib.h, строка: 10323, функция: POINT {anonymous}::TX::txGetExtent(HDC),
+
+Сообщение: Параметр "dc" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FF2BC (32-bit), Flags: CMdRe0, Thread: 0x3594 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 8 0x77B64A77 in C:\Windows\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+# 9 0x77B64A47 in C:\Windows\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in POINT {anonymous}::TX::txGetExtent(HDC) at C:\Users\admen\Desktop\work\Pacmen\Books/TXlib.h (10323):
+
+  10321: $1  POINT err = {-1, -1};
+  10322: 
+=>10323: $   if (_TX_DEFAULT_HDC_FAILED (dc)) return err;
+  10324: 
+  10325: $   BITMAP bmap = {0};
+
+# 1 in void Hero::DrawHero(int) at C:\Users\admen\Desktop\work\Pacmen\Pakmen.cpp (268):
+
+    266:     if (vy < 0 && vx == 0) v = 3;
+    267: 
+=>  268:     if (status == Life)  txTransparentBlt (txDC(), x - xsize/FrameSizeX, y - ysize/FrameSizeX, xsize, ysize, photo, t%FrameSizeX*xsize, v*ysize, TX_WHITE);
+    269:     //if (status == Rip)  { txSetFillColor (TX_WHITE); txCircle (x, y , 15); }
+    270: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\admen\Desktop\work\Pacmen\Books/TXlib.h
+Compiled:	Mar 24 2018 17:33:30, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Mar 24 2018 17:33:35
+
+Run file:	C:\Users\admen\Desktop\work\Pacmen\Pakmen.exe
+Directory:	C:\Users\admen\Desktop\work\Pacmen
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\admen\Desktop\work\Pacmen\Pakmen.exe, файл: C:\Users\admen\Desktop\work\Pacmen\Books/TXlib.h, строка: 10323, функция: POINT {anonymous}::TX::txGetExtent(HDC),
+
+Сообщение: Параметр "dc" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FF2BC (32-bit), Flags: CMdRe0, Thread: 0x7C8 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 8 0x77B64A77 in C:\Windows\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+# 9 0x77B64A47 in C:\Windows\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in POINT {anonymous}::TX::txGetExtent(HDC) at C:\Users\admen\Desktop\work\Pacmen\Books/TXlib.h (10323):
+
+  10321: $1  POINT err = {-1, -1};
+  10322: 
+=>10323: $   if (_TX_DEFAULT_HDC_FAILED (dc)) return err;
+  10324: 
+  10325: $   BITMAP bmap = {0};
+
+# 1 in void Hero::DrawHero(int) at C:\Users\admen\Desktop\work\Pacmen\Pakmen.cpp (268):
+
+    266:     if (vy < 0 && vx == 0) v = 3;
+    267: 
+=>  268:     if (status == Life)  txTransparentBlt (txDC(), x - xsize/FrameSizeX, y - ysize/FrameSizeX, xsize, ysize, photo, t%FrameSizeX*xsize, v*ysize, TX_WHITE);
+    269:     //if (status == Rip)  { txSetFillColor (TX_WHITE); txCircle (x, y , 15); }
+    270: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\admen\Desktop\work\Pacmen\Books/TXlib.h
+Compiled:	Mar 24 2018 17:34:27, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Mar 24 2018 17:34:30
+
+Run file:	C:\Users\admen\Desktop\work\Pacmen\Pakmen.exe
+Directory:	C:\Users\admen\Desktop\work\Pacmen
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\admen\Desktop\work\Pacmen\Pakmen.exe, файл: C:\Users\admen\Desktop\work\Pacmen\Books/TXlib.h, строка: 10323, функция: POINT {anonymous}::TX::txGetExtent(HDC),
+
+Сообщение: Параметр "dc" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FF2BC (32-bit), Flags: CMdRe0, Thread: 0x98C (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 8 0x77094A77 in C:\Windows\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+# 9 0x77094A47 in C:\Windows\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in POINT {anonymous}::TX::txGetExtent(HDC) at C:\Users\admen\Desktop\work\Pacmen\Books/TXlib.h (10323):
+
+  10321: $1  POINT err = {-1, -1};
+  10322: 
+=>10323: $   if (_TX_DEFAULT_HDC_FAILED (dc)) return err;
+  10324: 
+  10325: $   BITMAP bmap = {0};
+
+# 1 in void Hero::DrawHero(int) at C:\Users\admen\Desktop\work\Pacmen\Pakmen.cpp (276):
+
+    274:     if (vy < 0 && vx == 0) v = 3;
+    275: 
+=>  276:     if (status == Life)  txTransparentBlt (txDC(), x - xsize/FrameSizeX, y - ysize/FrameSizeX, xsize, ysize, photo, t%FrameSizeX*xsize, v*ysize, TX_WHITE);
+    277:     //if (status == Rip)  { txSetFillColor (TX_WHITE); txCircle (x, y , 15); }
+    278: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\admen\Desktop\work\Pacmen\Books/TXlib.h
+Compiled:	Apr  7 2018 12:33:21, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Apr 07 2018 12:33:25
+
+Run file:	C:\Users\admen\Desktop\work\Pacmen\Pakmen.exe
+Directory:	C:\Users\admen\Desktop\work\Pacmen
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\admen\Desktop\work\Pacmen\Pakmen.exe, файл: C:\Users\admen\Desktop\work\Pacmen\Books/TXlib.h, строка: 10323, функция: POINT {anonymous}::TX::txGetExtent(HDC),
+
+Сообщение: Параметр "dc" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FF2BC (32-bit), Flags: CMdRe0, Thread: 0x3A1C (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 8 0x77094A77 in C:\Windows\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+# 9 0x77094A47 in C:\Windows\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in POINT {anonymous}::TX::txGetExtent(HDC) at C:\Users\admen\Desktop\work\Pacmen\Books/TXlib.h (10323):
+
+  10321: $1  POINT err = {-1, -1};
+  10322: 
+=>10323: $   if (_TX_DEFAULT_HDC_FAILED (dc)) return err;
+  10324: 
+  10325: $   BITMAP bmap = {0};
+
+# 1 in void Hero::DrawHero(int) at C:\Users\admen\Desktop\work\Pacmen\Pakmen.cpp (276):
+
+    274:     if (vy < 0 && vx == 0) v = 3;
+    275: 
+=>  276:     if (status == Life)  txTransparentBlt (txDC(), x - xsize/FrameSizeX, y - ysize/FrameSizeX, xsize, ysize, photo, t%FrameSizeX*xsize, v*ysize, TX_WHITE);
+    277:     //if (status == Rip)  { txSetFillColor (TX_WHITE); txCircle (x, y , 15); }
+    278: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\admen\Desktop\work\Pacmen\Books/TXlib.h
+Compiled:	Apr  7 2018 12:35:03, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Apr 07 2018 12:35:08
+
+Run file:	C:\Users\admen\Desktop\work\Pacmen\Pakmen.exe
+Directory:	C:\Users\admen\Desktop\work\Pacmen
+
+--------------------------------------------------
