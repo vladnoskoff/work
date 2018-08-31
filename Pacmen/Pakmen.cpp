@@ -190,13 +190,6 @@ return 30;
 
             }
 
-        if (fon = fon2)
-            {
-            fon         = fon2;
-            //Pacman.x    = 606,  Pacman.y      = 100;
-            Red.status  = Life, Yellow.status = Life;
-            life        = 2;
-            }
 
         t++;
         txSleep               (100);
