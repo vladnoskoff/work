@@ -32,8 +32,9 @@ void   DrawLife      (int life);
 int    TimeLevel     ();
 
 void DrawFood        (Hero Eat[], int t);
-void RandFood        (Hero Eat[], HDC eat);
+void RandFood        (Hero Eat[], HDC eat, int t);
 void DistanceFood    (Hero Eat[], Hero hero);
+void HowManyAte      (Hero Eat[]);
 
 const int XMap       = 1700;
 const int YMap       = 1070;
@@ -74,11 +75,12 @@ int pakman ()
 
     HDC fon       = fon1;
 
-    txTransparentBlt      (txDC(), 0, 0, 1700, 1000, fon, 0, 0, TX_WHITE);
-
-    RandFood              (Eat, eat);
+    txTransparentBlt      (txDC(), 0, 0, 1700, 1070, fon, 0, 0, TX_WHITE);
 
     int t         = 0;
+
+    RandFood              (Eat, eat, t);
+
 
     int StartTime = GetTickCount();
 
@@ -124,7 +126,7 @@ return 30;
         txSetFillColor        (TX_BLACK);
         txClear               ();
 
-        txTransparentBlt      (txDC(), 0, 0, 1700, 1000, fon, 0, 0, TX_WHITE);
+        txTransparentBlt      (txDC(), 0, 0, 1700, 1070, fon, 0, 0, TX_WHITE);
 
         Pacman.Phisica        ();
 
@@ -163,11 +165,12 @@ return 30;
 
         if (time >= PacmanTime*1000) break;
 
-        printf                ("%d \n", time);
 
         DistanceFood (Eat, Red);
         DistanceFood (Eat, Yellow);
         DistanceFood (Eat, Pacman);
+
+        HowManyAte   (Eat);
 
         if (Yellow.status == Rip && Red.status == Rip)
             {
@@ -176,15 +179,16 @@ return 30;
             if (Answer == IDYES)
                 {
                 fon         = fon2;
-                Pacman.x    = 606,  Pacman.y      = 100;
+                //Pacman.x    = 606,  Pacman.y      = 100;
                 Red.status  = Life, Yellow.status = Life;
                 life        = 2;
-
                 }
             else
                 {
                 break;
                 }
+
+
 
             }
 
@@ -214,19 +218,6 @@ void Hero::Phisica ()
     int xsize = txGetExtentX (photo) / 2 - 6;
     int ysize = txGetExtentY (photo) / 4 - 6;
 
-/*
-    printf ("xsize= %d\n", xsize);
-    printf ("ysize= %d\n", ysize);
-    txSetColor     (TX_YELLOW);
-    txSetFillColor (TX_NULL);
-    txCircle (x - xsize/2,   y,         5);
-    txCircle (x,           y + ysize/2, 5);
-    txCircle (x + xsize/2,   y,         5);
-    txCircle (x,           y - ysize/2, 5);
-    txSetColor (TX_GREEN);
-    txSetFillColor (TX_NULL);
-    txCircle (x,           y,         5);
-*/
 
     COLORREF leftpixel  = txGetPixel (x - xsize/2,  y);
     COLORREF uppixel    = txGetPixel (x,            y + ysize/2);
@@ -378,7 +369,6 @@ int Touching (Hero* pacman, Hero* hero2, Hero* hero3, int *life)
 
     if (Distance12 <= 10)
         {
-        //printf ("R");
         hero2->status  = Rip;
         }
 
@@ -388,7 +378,6 @@ int Touching (Hero* pacman, Hero* hero2, Hero* hero3, int *life)
 
     if (Distance13 <= 10)
         {
-        //printf ("Y");
         hero3->status = Rip;
         }
 
@@ -441,7 +430,7 @@ void DrawLife (int life)
 
     sprintf (text, "Life : %d", life);
 
-    txTextOut (800, 1010, text);
+    txTextOut (600, 1010, text);
 
     }
 
@@ -470,7 +459,7 @@ void DrawFood (Hero Eat[], int t)
 
     }
 
-void RandFood (Hero Eat[], HDC eat)
+void RandFood (Hero Eat[], HDC eat, int t)
     {
 
     int n = 0;
@@ -488,17 +477,34 @@ void RandFood (Hero Eat[], HDC eat)
         Eat[n].status       = Life;
         Eat[n].oldstatus    = Life;
 
+        // eat[0] (120, 120)
+        // eat[1] (600, 600)
+        // eat[2] (120, 120)
+
+
 
         while (txGetPixel (Eat[n].x, Eat[n].y) != TX_BLACK)
             {
             Eat[n].x        = rand ()%28 * 60;
             Eat[n].y        = rand ()%18 * 60;
+
             }
 
+        Eat[n].DrawHero (t);
 
         n++;
         }
 
+    n = 0;
+
+    while (n < N)
+        {
+
+       // printf ("Eat[n]: %d, x= %d,y = %d \n", n, Eat[n].x, Eat[n].y);
+
+
+        n++;
+        }
 
     }
 
@@ -527,6 +533,37 @@ void DistanceFood (Hero Eat[], Hero hero)
         }
 
     }
+
+
+void HowManyAte (Hero Eat[])
+    {
+    int heroeat = 0;
+    int n = 0;
+
+    while (n < N)
+        {
+
+        if (Eat[n].status == Rip)
+            {
+            heroeat = heroeat + 1;
+
+            }
+        n++;
+        }
+
+
+
+    txSetColor (TX_YELLOW);
+
+    char text [100] = "";
+
+    sprintf (text, "heroeat : %d", heroeat);
+
+    txTextOut (800, 1010, text);
+
+    }
+
+
 
 
 //------------------------------------------------------

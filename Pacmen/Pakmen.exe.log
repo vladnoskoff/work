@@ -932,3 +932,203 @@ Run file:	C:\Users\admen\Desktop\work\Pacmen\Pakmen.exe
 Directory:	C:\Users\admen\Desktop\work\Pacmen
 
 --------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\admen\Desktop\work\Pacmen\Pakmen.exe, файл: C:\Users\admen\Desktop\work\Pacmen\Books/TXlib.h, строка: 10323, функция: POINT {anonymous}::TX::txGetExtent(HDC),
+
+Сообщение: Параметр "dc" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FF2BC (32-bit), Flags: CMdRe0, Thread: 0x2BD4 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 8 0x779B2FEA in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlValidSecurityDescriptor()
+# 9 0x779B2FBA in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlValidSecurityDescriptor()
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in POINT {anonymous}::TX::txGetExtent(HDC) at C:\Users\admen\Desktop\work\Pacmen\Books/TXlib.h (10323):
+
+  10321: $1  POINT err = {-1, -1};
+  10322: 
+=>10323: $   if (_TX_DEFAULT_HDC_FAILED (dc)) return err;
+  10324: 
+  10325: $   BITMAP bmap = {0};
+
+# 1 in void Hero::Phisica() at C:\Users\admen\Desktop\work\Pacmen\Pakmen.cpp (227):
+
+    225:     COLORREF uppixel    = txGetPixel (x,            y + ysize/2);
+    226:     COLORREF rightpixel = txGetPixel (x + xsize/2,  y);
+=>  227:     COLORREF downpixel  = txGetPixel (x,            y - ysize/2);
+    228: 
+    229:     if (leftpixel != TX_BLACK || rightpixel != TX_BLACK)
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\admen\Desktop\work\Pacmen\Books/TXlib.h
+Compiled:	Jul 10 2018 18:02:48, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Jul 10 2018 18:02:50
+
+Run file:	C:\Users\admen\Desktop\work\Pacmen\Pakmen.exe
+Directory:	C:\Users\admen\Desktop\work\Pacmen
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\admen\Desktop\work\Pacmen\Pakmen.exe, файл: C:\Users\admen\Desktop\work\Pacmen\Books/TXlib.h, строка: 10323, функция: POINT {anonymous}::TX::txGetExtent(HDC),
+
+Сообщение: Параметр "dc" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FF2BC (32-bit), Flags: CMdRe0, Thread: 0x5414 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 8 0x779B2FEA in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlValidSecurityDescriptor()
+# 9 0x779B2FBA in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlValidSecurityDescriptor()
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in POINT {anonymous}::TX::txGetExtent(HDC) at C:\Users\admen\Desktop\work\Pacmen\Books/TXlib.h (10323):
+
+  10321: $1  POINT err = {-1, -1};
+  10322: 
+=>10323: $   if (_TX_DEFAULT_HDC_FAILED (dc)) return err;
+  10324: 
+  10325: $   BITMAP bmap = {0};
+
+# 1 in void Hero::Phisica() at C:\Users\admen\Desktop\work\Pacmen\Pakmen.cpp (227):
+
+    225:     COLORREF uppixel    = txGetPixel (x,            y + ysize/2);
+    226:     COLORREF rightpixel = txGetPixel (x + xsize/2,  y);
+=>  227:     COLORREF downpixel  = txGetPixel (x,            y - ysize/2);
+    228: 
+    229:     if (leftpixel != TX_BLACK || rightpixel != TX_BLACK)
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\admen\Desktop\work\Pacmen\Books/TXlib.h
+Compiled:	Jul 10 2018 18:03:09, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Jul 10 2018 18:03:12
+
+Run file:	C:\Users\admen\Desktop\work\Pacmen\Pakmen.exe
+Directory:	C:\Users\admen\Desktop\work\Pacmen
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\admen\Desktop\work\Pacmen\Pakmen.exe, файл: C:\Users\admen\Desktop\work\Pacmen\Books/TXlib.h, строка: 10323, функция: POINT {anonymous}::TX::txGetExtent(HDC),
+
+Сообщение: Параметр "dc" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FF2BC (32-bit), Flags: CMdRe0, Thread: 0x12A0 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 8 0x779B2FEA in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlValidSecurityDescriptor()
+# 9 0x779B2FBA in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlValidSecurityDescriptor()
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in POINT {anonymous}::TX::txGetExtent(HDC) at C:\Users\admen\Desktop\work\Pacmen\Books/TXlib.h (10323):
+
+  10321: $1  POINT err = {-1, -1};
+  10322: 
+=>10323: $   if (_TX_DEFAULT_HDC_FAILED (dc)) return err;
+  10324: 
+  10325: $   BITMAP bmap = {0};
+
+# 1 in void Hero::Phisica() at C:\Users\admen\Desktop\work\Pacmen\Pakmen.cpp (225):
+
+    223:     COLORREF uppixel    = txGetPixel (x,            y + ysize/2);
+    224:     COLORREF rightpixel = txGetPixel (x + xsize/2,  y);
+=>  225:     COLORREF downpixel  = txGetPixel (x,            y - ysize/2);
+    226: 
+    227:     if (leftpixel != TX_BLACK || rightpixel != TX_BLACK)
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\admen\Desktop\work\Pacmen\Books/TXlib.h
+Compiled:	Jul 10 2018 18:04:10, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Jul 10 2018 18:04:13
+
+Run file:	C:\Users\admen\Desktop\work\Pacmen\Pakmen.exe
+Directory:	C:\Users\admen\Desktop\work\Pacmen
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\admen\Desktop\work\Pacmen\Pakmen.exe, файл: C:\Users\admen\Desktop\work\Pacmen\Books/TXlib.h, строка: 10323, функция: POINT {anonymous}::TX::txGetExtent(HDC),
+
+Сообщение: Параметр "dc" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FF2BC (32-bit), Flags: CMdRe0, Thread: 0x4CDC (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 8 0x779B2FEA in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlValidSecurityDescriptor()
+# 9 0x779B2FBA in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlValidSecurityDescriptor()
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in POINT {anonymous}::TX::txGetExtent(HDC) at C:\Users\admen\Desktop\work\Pacmen\Books/TXlib.h (10323):
+
+  10321: $1  POINT err = {-1, -1};
+  10322: 
+=>10323: $   if (_TX_DEFAULT_HDC_FAILED (dc)) return err;
+  10324: 
+  10325: $   BITMAP bmap = {0};
+
+# 1 in void Hero::Phisica() at C:\Users\admen\Desktop\work\Pacmen\Pakmen.cpp (225):
+
+    223:     COLORREF uppixel    = txGetPixel (x,            y + ysize/2);
+    224:     COLORREF rightpixel = txGetPixel (x + xsize/2,  y);
+=>  225:     COLORREF downpixel  = txGetPixel (x,            y - ysize/2);
+    226: 
+    227:     if (leftpixel != TX_BLACK || rightpixel != TX_BLACK)
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\admen\Desktop\work\Pacmen\Books/TXlib.h
+Compiled:	Jul 10 2018 18:04:24, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Jul 10 2018 18:04:26
+
+Run file:	C:\Users\admen\Desktop\work\Pacmen\Pakmen.exe
+Directory:	C:\Users\admen\Desktop\work\Pacmen
+
+--------------------------------------------------
