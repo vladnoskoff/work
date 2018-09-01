@@ -1132,3 +1132,53 @@ Run file:	C:\Users\admen\Desktop\work\Pacmen\Pakmen.exe
 Directory:	C:\Users\admen\Desktop\work\Pacmen
 
 --------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует:
+
+Программа: C:\Users\admen\Desktop\work\Pacmen\Pakmen.exe, файл: C:\Users\admen\Desktop\work\Pacmen\Books/TXlib.h, строка: 10493, функция: COLORREF {anonymous}::TX::txGetPixel(double, double, HDC),
+
+Сообщение: Окно рисования не создано или не в порядке.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x005002BC (32-bit), Flags: CMdrE0, Thread: 0x53D4 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 6 0x77E32FEA in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlValidSecurityDescriptor()
+# 7 0x77E32FBA in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlValidSecurityDescriptor()
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in COLORREF {anonymous}::TX::txGetPixel(double, double, HDC) at C:\Users\admen\Desktop\work\Pacmen\Books/TXlib.h (10493):
+
+  10491: inline COLORREF txGetPixel (double x, double y, HDC dc /*= txDC()*/)
+  10492:     {
+=>10493: $1  if (_TX_DEFAULT_HDC_FAILED (dc)) return CLR_INVALID;
+  10494: 
+  10495: $   return txGDI ((Win32::GetPixel (dc, ROUND (x), ROUND (y))), dc);
+
+# 1 in void RandFood(Hero*, HDC, int) at C:\Users\admen\Desktop\work\Pacmen\Pakmen.cpp (491):
+
+    489: 
+    490: 
+=>  491:         while (txGetPixel (Eat[n].x, Eat[n].y) != TX_BLACK)
+    492:             {
+    493:             Eat[n].x        = rand ()%28 * 60;
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\admen\Desktop\work\Pacmen\Books/TXlib.h
+Compiled:	Sep  1 2018 17:30:47, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Sep 01 2018 17:30:51
+
+Run file:	C:\Users\admen\Desktop\work\Pacmen\Pakmen.exe
+Directory:	C:\Users\admen\Desktop\work\Pacmen
+
+--------------------------------------------------

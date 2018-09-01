@@ -178,10 +178,16 @@ return 30;
             int Answer = txMessageBox ("Level 2 ?!?!?","бнопня???", MB_YESNO);
             if (Answer == IDYES)
                 {
-                fon         = fon2;
-                //Pacman.x    = 606,  Pacman.y      = 100;
+                fon = fon2;
+                txBitBlt (0, 0, fon2);
+
+                Pacman.x    = 606,  Pacman.y      = 100;
+                Yellow.y    = 500;
+                Red.x       = 660;
+
                 Red.status  = Life, Yellow.status = Life;
                 life        = 2;
+                RandFood (Eat, eat, t);
                 }
             else
                 {
@@ -489,10 +495,25 @@ void RandFood (Hero Eat[], HDC eat, int t)
 
             }
 
-        Eat[n].DrawHero (t);
+        txCircle (Eat[n].x, Eat[n].y, 5);
+
+        txSleep (100);
 
         n++;
         }
+
+    FILE* FileEat = fopen ("ЕДЮ.txt", "w");
+
+    n = 0;
+
+    while (n < N)
+        {
+
+        fprintf (FileEat, "x= %d, y= %d \n", Eat[n].x, Eat[n].y);
+
+        n++;
+        }
+    fclose (FileEat);
     }
 
 void DistanceFood (Hero Eat[], Hero hero)
@@ -555,4 +576,6 @@ void HowManyAte (Hero Eat[])
 
 //------------------------------------------------------
 
+/*
 
+*/
