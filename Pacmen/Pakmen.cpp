@@ -42,7 +42,7 @@ const int YMap       = 1070;
 
 const int Life       = 1;
 const int Rip        = 0;
-const int N          = 1500;
+const int N          = 1000;
 
 const int HeroPlace  = 1000;
 
@@ -90,34 +90,34 @@ int pakman ()
 
     int PacmanTime = TimeLevel  ();
 
-/*
-Создаем переменную в функции (SelectLevel)
-Присваиваем значения 30 и 10
-возвращаем переменную
-
-мы это разбирали
-тоже самое что и return 30 и return 10
-
-я хочу
-return 30 :
-вызываем функцию (SelectLevel)
-мы возвращаем число и присваиваем переменной(PacmanTime)
-потом начинаеться работа цикла
-
-на самом деле происходит
-вызываем функцию (SelectLevel)
-в ней
-мы возвращаем число (30 или 10)
-и все
-
-как правильно сделать вызов функции(SelectLevel)
-
-к переменной(PacmanTime) присвоить значения функции (SelectLevel)
-
-int PacmanTime = SelectLevel ();
-
-return 30;
-*/
+	/*
+	Создаем переменную в функции (SelectLevel)
+	Присваиваем значения 30 и 10
+	возвращаем переменную
+	
+	мы это разбирали
+	тоже самое что и return 30 и return 10
+	
+	я хочу
+	return 30 :
+	вызываем функцию (SelectLevel)
+	мы возвращаем число и присваиваем переменной(PacmanTime)
+	потом начинаеться работа цикла
+	
+	на самом деле происходит
+	вызываем функцию (SelectLevel)
+	в ней
+	мы возвращаем число (30 или 10)
+	и все
+	
+	как правильно сделать вызов функции(SelectLevel)
+	
+	к переменной(PacmanTime) присвоить значения функции (SelectLevel)
+	
+	int PacmanTime = SelectLevel ();
+	
+	return 30;
+	*/
 
     txBegin ();
 
@@ -495,9 +495,9 @@ void RandFood (Hero Eat[], HDC eat, int t)
 
             }
 
-        txCircle (Eat[n].x, Eat[n].y, 5);
+        //txCircle (Eat[n].x, Eat[n].y, 2);
 
-        txSleep (100);
+        //txSleep (100);
 
         n++;
         }
@@ -513,6 +513,7 @@ void RandFood (Hero Eat[], HDC eat, int t)
 
         n++;
         }
+
     fclose (FileEat);
     }
 
@@ -575,7 +576,3 @@ void HowManyAte (Hero Eat[])
 
 
 //------------------------------------------------------
-
-/*
-
-*/
